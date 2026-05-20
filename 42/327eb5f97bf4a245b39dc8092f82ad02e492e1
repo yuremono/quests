@@ -1,0 +1,33 @@
+front-page.php
+  s_b72ac87c810ac3::t_d106a9a3997ea1 30,287,290,394
+  s_b72ac87c810ac3::t_b33151f95334e1 41,55,78,107,131
+assets/portfolio.js
+  s_b72ac87c810ac3::t_6987c586b3a8c4 13-17,133,136
+assets/theme.scss
+  s_b72ac87c810ac3::t_eaa9ef9814caef 335,410
+  s_b72ac87c810ac3::t_a9ee371472ca31 83-84,89-91,96-99,112-148
+assets/theme.css
+  s_b72ac87c810ac3::t_106ed393ffdbe3 4988-4989,4994-4996,5001-5004,5017-5053
+  s_b72ac87c810ac3::t_7b45b03d089ecb 5240,5307
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.10",
+  "base_commit_sha": "42327eb5f97bf4a245b39dc8092f82ad02e492e1",
+  "prompts": {},
+  "humans": {
+    "h_53dad1e32c3c71": {
+      "author": "yuremono <5alviaofficinali50@gmail.com>"
+    }
+  },
+  "sessions": {
+    "s_b72ac87c810ac3": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019e439a-a4a7-78c3-940b-abda473cddb2",
+        "model": "gpt-5.5"
+      },
+      "human_author": "yuremono <5alviaofficinali50@gmail.com>"
+    }
+  }
+}
