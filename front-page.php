@@ -9,97 +9,6 @@ declare(strict_types=1);
 
 get_header();
 
-$experience_groups = array(
-	array(
-		array(
-			'title' => '職種・スキル概要',
-			'rows'  => array(
-				array( 'Web デザイナー', '3.5 Year' ),
-				array( 'Web コーダー', '3.5 Year' ),
-				array( 'フロントエンドエンジニア', '実務未経験' ),
-				array( 'AI駆動開発', '1 Year' ),
-			),
-		),
-		array(
-			'title' => 'エージェント / web',
-			'rows'  => array(
-				array( 'Cursor', '1 Year' ),
-				array( 'Claude Code (GLM, OpenRouter)', '4 Month' ),
-				array( 'Codex / web', '1 Month / 1 Year' ),
-				array( 'Gemini / NanoBanana', '1 Year / 6 Month' ),
-			),
-		),
-		array(
-			'title' => '言語 + ライブラリ',
-			'rows'  => array(
-				array( 'WEB SCSS+JavaScript+HTML', '4 Years' ),
-				array( 'TypeScript', 'AI 1 Year' ),
-				array( 'Python', 'AI 6 Month' ),
-				array( 'React/Next.Js/Vite', 'AI 1 Year' ),
-				array( 'vue/astro/svelte', 'AI 4 Month' ),
-				array( 'WordPress', 'Localで学習中' ),
-			),
-		),
-	),
-	array(
-		array(
-			'title' => 'デザインツール',
-			'rows'  => array(
-				array( 'PhotoShop', '4 Year' ),
-				array( 'Illustrator', '4 Year' ),
-				array( 'Figma', 'HtmlToFigmaなど補助利用' ),
-				array( 'Pencil.dev', '数回' ),
-				array( 'Stitch', '数回' ),
-				array( 'GPT Image-2.0', 'LPデザイン・アセット作成の実運用を研究' ),
-				array( 'Claude Design', '情報収集' ),
-			),
-		),
-		array(
-			'title' => '環境',
-			'rows'  => array(
-				array( 'MacOS', '4 年' ),
-				array( 'Windows', '社内利用 3.5 年' ),
-				array( '情報収集', '主にX,Zenn,+webAI ディスカバー' ),
-				array( '制作環境', '自作のtask系,memory系,実装系スキルを使用' ),
-			),
-		),
-		array(
-			'title' => 'インフラ / データベース',
-			'rows'  => array(
-				array( 'Vercel', 'AI 1 Year' ),
-				array( 'Supabase', 'AI 1 Year' ),
-				array( 'Github', 'AI 1 Year' ),
-				array( 'Xserver+MySQL', '実務 4 Year' ),
-			),
-		),
-	),
-	array(
-		array(
-			'title' => 'その他利用履歴',
-			'rows'  => array(
-				array( 'Tailwind CSS', '6 Month,AI 1 Year' ),
-				array( 'canvas API', 'AI 1 Year' ),
-				array( 'Three.js', 'AI 1 Year' ),
-				array( 'D3.js', 'AI 6 Month' ),
-				array( 'GSAP', '3.5 Year' ),
-				array( 'VScode/Chrome Extentions', '1~2回作成' ),
-				array( 'NanoBanana', 'スキルで頻繁に利用' ),
-				array( 'Quiver.ai/arrow-1', 'BYOS demoのsvg生成で使用' ),
-				array( 'Recraft', '高度な画像生成、SVG作成' ),
-				array( 'LottieAnimation', 'webツール試用' ),
-				array( 'memsearch', 'claude/codexで常用' ),
-				array( 'superpowers/oh-my-claudecode', '試用' ),
-				array( 'tweekpane', '`/Generator`で使用' ),
-				array( 'Z.ai Coding Plan', 'Claude Codeで使用' ),
-				array( 'Open Router', 'モデル比較' ),
-				array( 'Fal AI', '動画生成で使用' ),
-				array( 'OpenClaw', '試用' ),
-				array( 'tailscale', 'スマホターミナル操作試用' ),
-			),
-		),
-	),
-);
-
 $repulsion_items = array(
 	array( 'Other Works', '', '', 'is-initial pointer-events-none mr-4 -mt-4 bg-transparent', '' ),
 	array( 'Random Generator', home_url( '/rects' ), '', 'mt-4', 'コントローラー付きのランダム図形配置ジェネレーター' ),
@@ -129,14 +38,36 @@ $repulsion_items = array(
 					<li class="NavLi"><a href="<?php echo esc_url( home_url( '/' ) ); ?>">HOME</a></li>
 					<li class="NavLi [font-family:--Ship]"><a href="<?php echo esc_url( home_url( '/bunmyaku' ) ); ?>">文脈</a></li>
 					<li class="NavLi NavDrop">
-						<button type="button" class="DropA DropToggle">Repositories<span class="DropIcon">⌄</span></button>
-						<ul class="DropUl" aria-label="Repositories">
-							<li class="DropLi"><a href="https://github.com/yuremono/portfolio" target="_blank" rel="noopener noreferrer">Portfolio ↗</a></li>
-							<li class="DropLi"><a href="https://github.com/yuremono/wp-local-demo" target="_blank" rel="noopener noreferrer">wp-local-demo ↗</a></li>
-							<li class="DropLi"><a href="https://github.com/yuremono/BurnYourOwnStyle/tree/react" target="_blank" rel="noopener noreferrer">BurnYourOwnStyle ↗</a></li>
+						<button type="button" class="DropA DropToggle" popovertarget="HeaderRepositoriesMenu-cylinder">Repositories<span class="DropIcon">⌄</span></button>
+						<button type="button" class="DropBtn DropToggle" popovertarget="HeaderRepositoriesMenu-cylinder" aria-label="Toggle repositories submenu"></button>
+						<ul id="HeaderRepositoriesMenu-cylinder" class="DropUl" popover="auto" aria-label="Repositories">
+							<li class="DropLi"><a href="https://github.com/yuremono/portfolio" class=" " target="_blank" rel="noopener noreferrer">Portfolio<span class="icon-arrow-square-out" aria-hidden="true">↗</span></a></li>
+							<li class="DropLi"><a href="https://github.com/yuremono/wp-local-demo" class=" " target="_blank" rel="noopener noreferrer">wp-local-demo<span class="icon-arrow-square-out" aria-hidden="true">↗</span></a></li>
+							<li class="DropLi"><a href="https://github.com/yuremono/BurnYourOwnStyle/tree/react" class=" " target="_blank" rel="noopener noreferrer">BurnYourOwnStyle<span class="icon-arrow-square-out" aria-hidden="true">↗</span></a></li>
+							<li class="DropLi"><a href="https://github.com/yuremono/agent-driven-CMS" class=" " target="_blank" rel="noopener noreferrer">AgentDrivenCMS<span class="icon-arrow-square-out" aria-hidden="true">↗</span></a></li>
+							<li class="DropLi"><a href="https://github.com/yuremono/agent-relay" class=" " target="_blank" rel="noopener noreferrer">AgentRelay<span class="icon-arrow-square-out" aria-hidden="true">↗</span></a></li>
+							<li class="DropLi"><a href="https://github.com/yuremono/creative-demos" class=" " target="_blank" rel="noopener noreferrer">CreativeDemos<span class="icon-arrow-square-out" aria-hidden="true">↗</span></a></li>
+							<li class="DropLi"><a href="https://github.com/yuremono/chatKanban" class=" " target="_blank" rel="noopener noreferrer">ChatCanban<span class="icon-arrow-square-out" aria-hidden="true">↗</span></a></li>
+							<li class="DropLi"><a href="https://github.com/yuremono/portfolio" class=" " target="_blank" rel="noopener noreferrer">NextJsCMS<span class="icon-arrow-square-out" aria-hidden="true">↗</span></a></li>
 						</ul>
 					</li>
-					<li class="NavLi"><a href="<?php echo esc_url( home_url( '/preview' ) ); ?>">BYOS</a></li>
+					<li class="NavLi NavDrop">
+						<button type="button" class="DropA DropToggle" popovertarget="HeaderPagesMenu-cylinder">Pages<span class="DropIcon">⌄</span></button>
+						<button type="button" class="DropBtn DropToggle" popovertarget="HeaderPagesMenu-cylinder" aria-label="Toggle pages submenu"></button>
+						<ul id="HeaderPagesMenu-cylinder" class="DropUl" popover="auto" aria-label="Pages">
+							<li class="DropLi"><a href="<?php echo esc_url( home_url( '/preview' ) ); ?>">BurnYourOwnStyle</a></li>
+							<li class="DropLi [font-family:--Ship]"><a href="<?php echo esc_url( home_url( '/bunmyaku' ) ); ?>">文脈</a></li>
+							<li class="DropLi"><a href="<?php echo esc_url( home_url( '/donut' ) ); ?>">Donut<small>(ADCMS)</small></a></li>
+							<li class="DropLi"><a href="<?php echo esc_url( home_url( '/rects' ) ); ?>">RandomGenerator</a></li>
+							<li class="DropLi"><a href="<?php echo esc_url( home_url( '/shuffleDivide' ) ); ?>">ShuffleDivide</a></li>
+							<li class="DropLi"><a href="<?php echo esc_url( home_url( '/glitch' ) ); ?>">Glitch</a></li>
+							<li class="DropLi"><a href="<?php echo esc_url( home_url( '/grid-carousel' ) ); ?>">GridCarousel</a></li>
+							<li class="DropLi"><a href="<?php echo esc_url( home_url( '/bbox' ) ); ?>">BBox</a></li>
+							<li class="DropLi"><a href="<?php echo esc_url( home_url( '/activity' ) ); ?>">Activity</a></li>
+							<li class="DropLi"><a href="https://chat-kanban.vercel.app/" class=" " target="_blank" rel="noopener noreferrer">ChatCanban<span class="icon-arrow-square-out" aria-hidden="true">↗</span></a></li>
+							<li class="DropLi"><a href="https://cms0505.vercel.app/" class=" " target="_blank" rel="noopener noreferrer">NextJsCMS<span class="icon-arrow-square-out" aria-hidden="true">↗</span></a></li>
+						</ul>
+					</li>
 				</ul>
 				<div class="FocusTrap MenuToggle" tabindex="0"></div>
 			</nav>
@@ -207,26 +138,108 @@ $repulsion_items = array(
 							</header>
 							<section class="mt-8" aria-label="Experience and Dependencies">
 								<div class="Cards col3 [--gap:1rem]">
-									<?php foreach ( $experience_groups as $group ) : ?>
-										<div class="item space-y-4">
-											<?php foreach ( $group as $card ) : ?>
-												<article class="BorderXY px-4 py-5 text-xs bg-WH/70">
-													<h3 class="text-[1rem] BorderB pb-4 flex items-baseline justify-between gap-4">
-														<?php echo esc_html( $card['title'] ); ?>
-														<span class="text-GR tracking-[0.1em]"><?php echo esc_html( (string) count( $card['rows'] ) ); ?> lists</span>
-													</h3>
-													<div class="DescList [--dtW:50%] [--PY:0.25em] [--PX:0.25em] mt-4 IsDdright">
-														<dl class="items-center">
-															<?php foreach ( $card['rows'] as $row ) : ?>
-																<dt><?php echo esc_html( $row[0] ); ?></dt>
-																<dd><span class="px-2 bg-AC/30 font-medium"><?php echo esc_html( $row[1] ); ?></span></dd>
-															<?php endforeach; ?>
-														</dl>
-													</div>
-												</article>
-											<?php endforeach; ?>
-										</div>
-									<?php endforeach; ?>
+									<div class="item space-y-4">
+										<article class="BorderXY px-4 py-5 text-xs bg-AC/10">
+											<h3 class="text-[1rem] BorderB pb-4 flex items-baseline justify-between gap-4 ">職種・スキル概要<span class="text-GR tracking-[0.1em] ">4 lists</span></h3>
+											<div class="DescList [--dtW:50%] [--PY:0.25em] [--PX:0.25em] mt-4 IsDdright">
+												<dl class="items-center">
+													<dt class="">Web デザイナー</dt><dd><span class="px-2 bg-WH font-medium">3.5 Year</span></dd>
+													<dt class="">Web コーダー</dt><dd><span class="px-2 bg-WH font-medium">3.5 Year</span></dd>
+													<dt class="">フロントエンドエンジニア</dt><dd><span class="px-2 bg-WH font-medium">実務未経験</span></dd>
+													<dt class="">AI駆動開発</dt><dd><span class="px-2 bg-WH font-medium">1 Year</span></dd>
+												</dl>
+											</div>
+										</article>
+										<article class="BorderXY px-4 py-5 text-xs bg-WH/70">
+											<h3 class="text-[1rem] BorderB pb-4 flex items-baseline justify-between gap-4 ">エージェント / web<span class="text-GR tracking-[0.1em] ">4 lists</span></h3>
+											<div class="DescList [--dtW:50%] [--PY:0.25em] [--PX:0.25em] mt-4 IsDdright">
+												<dl class="items-center">
+													<dt class="">Cursor</dt><dd><span class="px-2 bg-AC/30 font-medium">1 Year</span></dd>
+													<dt class="">Claude Code (GLM, OpenRouter)</dt><dd><span class="">4 Month</span></dd>
+													<dt class="">Codex / web</dt><dd><span class="px-2 bg-AC/30 font-medium">1 Month / 1 Year</span></dd>
+													<dt class="">Gemini / NanoBanana</dt><dd>1 Year / 6 Month</dd>
+												</dl>
+											</div>
+										</article>
+										<article class="BorderXY px-4 py-5 text-xs bg-WH/70">
+											<h3 class="text-[1rem] BorderB pb-4 flex items-baseline justify-between gap-4 ">言語 + ライブラリ<span class="text-GR tracking-[0.1em] ">5 lists</span></h3>
+											<div class="DescList [--dtW:50%] [--PY:0.25em] [--PX:0.25em] mt-4 IsDdright">
+												<dl class="items-center">
+													<dt>WEB SCSS+JavaScript+HTML</dt><dd><span class="px-2 bg-AC/30 font-medium">4 Years</span></dd>
+													<dt>TypeScript</dt><dd><span class="px-2 bg-AC/30 font-medium">AI 1 Year</span></dd>
+													<dt>Python</dt><dd>AI 6 Month</dd>
+													<dt>React/Next.Js/Vite</dt><dd><span class="px-2 bg-AC/30 font-medium">AI 1 Year</span></dd>
+													<dt>vue/astro/svelte</dt><dd>AI 4 Month</dd>
+													<dt>WordPress</dt><dd class="[--ddW:100%]">`Local`で学習中&nbsp;<a href="https://github.com/yuremono/wp-local-demo" class="align-top leading-[1.8]" target="_blank" rel="noopener noreferrer">wp-local-demo<span class="icon-arrow-square-out" aria-hidden="true">↗</span></a></dd>
+												</dl>
+											</div>
+										</article>
+									</div>
+									<div class="item space-y-4">
+										<article class="BorderXY px-4 py-5 text-xs bg-WH/70">
+											<h3 class="text-[1rem] BorderB pb-4 flex items-baseline justify-between gap-4 ">デザインツール<span class="text-GR tracking-[0.1em] ">7 lists</span></h3>
+											<div class="DescList [--dtW:50%] [--PY:0.25em] [--PX:0.25em] mt-4 IsDdright">
+												<dl class="items-center">
+													<dt class="">PhotoShop</dt><dd><span class="">4 Year</span></dd>
+													<dt class="">Illustrator</dt><dd><span class="">4 Year</span></dd>
+													<dt class="">Figma</dt><dd>HtmlToFigmaなど補助利用</dd>
+													<dt class="">Pencil.dev</dt><dd><span class="">数回</span></dd>
+													<dt class="">Stitch</dt><dd><span class="">数回</span></dd>
+													<dt class="[--dtW:100%] ">GPT Image-2.0</dt><dd class="[--ddW:100%]"><span class="px-2 bg-AC/30 font-medium">LPデザイン・アセット作成の実運用を研究</span></dd>
+													<dt class="">Claude Design</dt><dd><span class="">情報収集</span></dd>
+												</dl>
+											</div>
+										</article>
+										<article class="BorderXY px-4 py-5 text-xs bg-WH/70">
+											<h3 class="text-[1rem] BorderB pb-4 flex items-baseline justify-between gap-4 ">環境<span class="text-GR tracking-[0.1em] ">4 lists</span></h3>
+											<div class="DescList [--dtW:40%] [--PY:0.25em] [--PX:0.25em] mt-4 IsDdright">
+												<dl class="items-center">
+													<dt class="">MacOS</dt><dd><span class="px-2 bg-AC/30 font-medium">4 年</span></dd>
+													<dt class="">Windows</dt><dd><span class="">社内利用 3.5 年</span></dd>
+													<dt class="[--dtW:100%] ">情報収集</dt><dd class="[--ddW:100%]"><span class="px-2 bg-AC/30 font-medium">主にX,Zenn,+webAI ディスカバー</span></dd>
+													<dt class="[--dtW:100%] ">制作環境</dt><dd class="[--ddW:100%]"><span class="px-2 bg-AC/30 font-medium">自作のtask系,memory系,実装系スキルを使用</span></dd>
+												</dl>
+											</div>
+										</article>
+										<article class="BorderXY px-4 py-5 text-xs bg-WH/70">
+											<h3 class="text-[1rem] BorderB pb-4 flex items-baseline justify-between gap-4 ">インフラ / データベース<span class="text-GR tracking-[0.1em] ">4 lists</span></h3>
+											<div class="DescList [--dtW:50%] [--PY:0.25em] [--PX:0.25em] mt-4 IsDdright">
+												<dl class="items-center">
+													<dt class="">Vercel</dt><dd><span class="px-2 bg-AC/30 font-medium">AI 1 Year</span></dd>
+													<dt class="">Supabase</dt><dd><span class="">AI 1 Year</span></dd>
+													<dt class="">Github</dt><dd>AI 1 Year</dd>
+													<dt class="">Xserver+MySQL</dt><dd><span class="">実務 4 Year</span></dd>
+												</dl>
+											</div>
+										</article>
+									</div>
+									<div class="item">
+										<article class="BorderXY px-4 py-5 text-xs bg-WH/70">
+											<h3 class="text-[1rem] BorderB pb-4 flex items-baseline justify-between gap-4 ">その他利用履歴</h3>
+											<div class="DescList [--dtW:50%] [--PY:0.25em] [--PX:0.25em] mt-4 IsDdright">
+												<dl class="items-center">
+													<dt class="">Tailwind CSS</dt><dd><span class="px-2 bg-AC/30 font-medium">6 Month,AI 1 Year</span></dd>
+													<dt class="">canvas API</dt><dd><span class="px-2 bg-AC/30 font-medium">AI 1 Year</span></dd>
+													<dt class="">Three.js</dt><dd>AI 1 Year</dd>
+													<dt class="">D3.js</dt><dd>AI 6 Month</dd>
+													<dt class="">GSAP</dt><dd>3.5 Year</dd>
+													<dt class="">VScode/Chrome Extentions</dt><dd>1~2回作成</dd>
+													<dt class="">NanoBanana </dt><dd>スキルで頻繁に利用</dd>
+													<dt class="">Quiver.ai/arrow-1</dt><dd class="[--ddW:100%]">BYOS demoのsvg生成で使用</dd>
+													<dt class="[--dtW:100%] ">Recraft</dt><dd class="[--ddW:100%]"><span class="">高度な画像生成、SVG作成</span></dd>
+													<dt class="">LottieAnimation</dt><dd>webツール試用</dd>
+													<dt class="">memsearch</dt><dd>claude/codexで常用</dd>
+													<dt class="">superpowers/oh-my-claudecode</dt><dd class=""><span>試用</span></dd>
+													<dt class="">tweekpane</dt><dd class="">`/Generator`で使用</dd>
+													<dt class="">Z.ai Coding Plan</dt><dd class="">Claude Codeで使用</dd>
+													<dt class="">Open Router</dt><dd class="">モデル比較</dd>
+													<dt class="">Fal AI</dt><dd class="">動画生成で使用</dd>
+													<dt class="">OpenClaw</dt><dd class="">試用</dd>
+													<dt class="">tailscale</dt><dd class="">スマホターミナル操作試用</dd>
+												</dl>
+											</div>
+										</article>
+									</div>
 									<div class="item"></div>
 								</div>
 							</section>
@@ -271,8 +284,35 @@ $repulsion_items = array(
 			<div class="ScrollSpacer" aria-hidden="true"></div>
 		</section>
 
-		<section class="out relative mt-0 grid BunmyakuTeaserSection">
-			<div class="BunmyakuTeaserCanvasPlaceholder" aria-hidden="true">文</div>
+		<section data-l="BunmyakuTeaser" class="out relative mt-0 grid BunmyakuTeaserSection">
+			<div class="relative min-h-[112.5vw] [grid-area:1/1] max-w-[1620px] w-full mx-auto">
+				<div class="sticky h-100lvh top-0 xl:top-[-30%] grid place-items-center">
+					<div class="BunmyakuTeaserCanvasPlaceholder block w-full aspect-square" aria-hidden="true">文</div>
+				</div>
+			</div>
+			<div class="WTS [--WTS:var(--tsw)_var(--BC50)] relative z-10 PX [grid-area:1/1] [font-family:--Ship] max-w-[48em] mx-auto">
+				<div class="[--LS:0.1em] py-[50lvh]">
+					<h2 class="h2FZ HFF BarAF JsRight">## 文脈.app</h2>
+					<p class="BudouxFade mx-auto my-[3rem] md:text-xl">
+						### SPEC.md, DESIGN.md, AGENTS.md をGUIで作成するツール<br>
+						<br>
+						DESIGN.mdはフロントエンドの要件定義書と言えます。公開サイトURLから作成するツールが多く出回っており、一定の効率化につながりますが、Sticthの公式テンプレートの情報量でも不十分であり、結局テンプレート出力になります。<br>
+						<br>
+						一方ClaudeDesignでは詳細を問いかける設計が従来のAIビルダーとの差別化でありますが、最先端モデルのテンプレートであることに変わりはありません。<br>
+						<br>
+						このツールではClaudeやモデル性能に依存せずに仕様書を作成すること。GUIで認知コストを下げることでどこまで実用に耐えられるかを試すMVP未満のものです。実際には出力品質を担保するための質問を用意することが最先端モデルでも困難で、時間がかかります。<br>
+						<br>
+						AGENTS.md(CLAUDE.md)では文章量を少なくすることが推奨されており、定型的なデータを使う場合が多いので最低水準が低いように思いますが、頻繁に更新するものではありません。AIツールを使い始める人のため、またはプロンプト保存、SKILL保管庫の機能を統合することでチーム内ツールとして活用できる可能性はあります。
+						<br>またcodex app-serverなどでGUI上から文書をプロンプトとしてあらためてmdファイルの作成をリクエストするという実装も検討できます。
+					</p>
+					<div class="JsLeft">
+						<a href="<?php echo esc_url( home_url( '/bunmyaku' ) ); ?>" class="mt-6 BarBF md:text-xl hover:text-AC">
+							Bunmyaku
+							<span class="align-middle ml-0" aria-hidden="true">›</span>
+						</a>
+					</div>
+				</div>
+			</div>
 		</section>
 
 		<div class="repulsion-lists-module mt-[-25lvh] z-10">
@@ -313,9 +353,45 @@ $repulsion_items = array(
 				</div>
 			</section>
 		</div>
+
+		<div class="ImgText grid-cols-1 items-center gap-8 md:grid-cols-2 ImgText hidden">
+			<div>
+				<div class="h-full">
+					<p>ここにテキストを入力します</p>
+				</div>
+			</div>
+		</div>
+
+		<section class="Form Form hidden" style="--base: 1200px;">
+			<div class="mb-8">
+				<h2>お問い合わせ</h2>
+				<p>以下のフォームよりおください。</p>
+			</div>
+			<form class="mx-auto max-w-2xl">
+				<div class="mb-4">
+					<label for="nc-name" class="mb-2 block font-medium">お名前</label>
+					<input type="text" id="nc-name" class="w-full rounded border border-[var(--border)] bg-[var(--background)] p-2 text-[var(--foreground)]" required name="name">
+				</div>
+				<div class="mb-4">
+					<label for="nc-email" class="mb-2 block font-medium">メールアドレス</label>
+					<input type="email" id="nc-email" class="w-full rounded border border-[var(--border)] bg-[var(--background)] p-2 text-[var(--foreground)]" required name="email">
+				</div>
+				<div class="mb-4">
+					<label for="nc-message" class="mb-2 block font-medium">メッセージ</label>
+					<textarea id="nc-message" name="message" rows="4" class="w-full rounded border border-[var(--border)] bg-[var(--background)] p-2 text-[var(--foreground)]" required></textarea>
+				</div>
+				<div class="mb-4">
+					<label class="flex items-center gap-2">
+						<input type="checkbox" class="mr-0" required name="privacy">
+						<span>プライバシーポリシーに同意する</span>
+					</label>
+				</div>
+				<button type="submit" class="rounded bg-slate-700 px-4 py-2 font-medium text-white">送信</button>
+			</form>
+		</section>
 	</main>
 
-	<footer class="Eng Wrap into bg-[--foreground] text-[--background] bg-no-repeat bg-contain bg-left-bottom Footer">
+	<footer class="Eng Wrap into bg-[--foreground] text-[--background] bg-no-repeat bg-contain bg-left-bottom Footer" style="background-image: url(<?php echo esc_url( get_template_directory_uri() . '/images/fff2.svg' ); ?>);">
 		<div class="DescList IsCenter">
 			<div>
 				<dl>

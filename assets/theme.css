@@ -5042,6 +5042,20 @@ body > * .in600 {
   pointer-events: none;
 }
 
+.BunmyakuTeaserSection {
+  min-height: 100lvh;
+}
+
+.BunmyakuTeaserCanvasPlaceholder {
+  display: grid;
+  width: 100%;
+  place-items: center;
+  font-family: var(--Ship);
+  font-size: clamp(12rem, 72vw, 48rem);
+  line-height: 1;
+  opacity: 0.18;
+}
+
 .repulsion-lists-module {
   --repulsion-list-light: var(--WH);
   --repulsion-list-light-muted: var(--BC);
@@ -5052,43 +5066,44 @@ body > * .in600 {
 .repulsion-lists-lines {
   position: absolute;
   inset: 0;
-  width: 100%;
-  height: 100%;
+  overflow: visible;
   pointer-events: none;
-  z-index: 0;
+  display: none;
 }
 
 .repulsion-lists-lines line {
-  stroke: var(--TC);
   stroke-width: 1;
-  opacity: 0.24;
+  stroke-opacity: 0.8;
+  transition: x1 300ms ease-out, y1 300ms ease-out, x2 300ms ease-out, y2 300ms ease-out;
 }
 
 .repulsion-lists-list {
-  position: relative;
-  z-index: 1;
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
   justify-content: center;
-  gap: 0.75rem;
-  min-height: 100lvh;
+  width: 100%;
+  height: 100%;
+  margin: 0;
   padding: 0;
+  list-style: none;
 }
 
 .repulsion-list-chip-control {
-  position: relative;
-  display: grid;
-  place-items: center;
-  border: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  align-content: center;
   padding: 0;
+  border: 0;
   background: transparent;
-  color: inherit;
-  font: inherit;
   cursor: pointer;
-  transition: transform 360ms ease, opacity 360ms ease;
-  transform: scale(var(--repulsion-list-chip-dynamic-scale, 1));
+  color: inherit;
+  text-decoration: none;
+  position: relative;
   transform-origin: center;
+  scale: 0.65625;
+  transform: scale(var(--repulsion-list-chip-dynamic-scale, 1));
+  transition: transform var(--btnTR) cubic-bezier(0.5, 1.25, 0.64, 1);
   opacity: var(--repulsion-list-chip-dynamic-opacity, 0.5);
 }
 
@@ -5099,63 +5114,111 @@ body > * .in600 {
 
 .repulsion-list-chip-content {
   position: relative;
-  display: inline-grid;
-  place-items: center;
-  aspect-ratio: 1;
-  min-width: 4.5em;
-  min-height: 4.5em;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.625rem;
+  min-width: 18.75rem;
+  margin-inline: auto;
   color: var(--repulsion-list-dark);
-}
-
-.repulsion-list-chip-label {
-  border-radius: 999px;
-  transition: background-color 260ms ease, color 260ms ease;
+  line-height: 1;
+  letter-spacing: -0.05em;
+  text-wrap: pretty;
+  user-select: none;
+  transition: background-color 200ms ease-out, min-width 200ms ease-out;
 }
 
 .repulsion-list-chip-content::before {
   content: "";
   position: absolute;
-  inset: 0;
-  border: 1px solid currentColor;
-  border-radius: 999px;
+  inset: -1.25rem;
+}
+
+.repulsion-lists-module .emojis,
+.repulsion-lists-module .counter {
+  position: absolute;
+  left: 0.25rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  pointer-events: none;
+}
+
+.repulsion-lists-module .emojis > div {
+  position: relative;
+  width: 2.5rem;
+  height: 2.5rem;
+}
+
+.repulsion-lists-module .emoji {
+  position: absolute;
+  width: 2.5rem;
+  height: 2.5rem;
+  pointer-events: none;
+}
+
+.repulsion-lists-module .counter {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+  color: var(--repulsion-list-light-muted);
+  font-size: 0.875rem;
+  opacity: 0;
+  scale: 0;
+  transition: opacity 200ms ease-out, scale 200ms ease-out;
 }
 
 .repulsion-lists-module .repulsion-list-chip-popup {
   position: absolute;
-  top: calc(100% + 0.5rem);
-  left: 50%;
-  z-index: 3;
+  z-index: 20;
+  top: var(--popup-top, 100%);
+  left: var(--popup-left, 0%);
+  width: 100%;
   display: grid;
-  width: min(22rem, 80vw);
   grid-template-rows: var(--repulsion-list-chip-grid-rows, 0fr);
   background: var(--repulsion-list-dark);
   color: var(--repulsion-list-text-light);
-  translate: -50% 0;
-  overflow: hidden;
-  transition: grid-template-rows 260ms ease, opacity 260ms ease;
+  text-align: left;
   opacity: 0;
-}
-
-.repulsion-lists-module .repulsion-list-chip-popup > div {
-  min-height: 0;
-  padding: 1rem;
+  pointer-events: none;
+  transform: translate(var(--popup-translate-x, 0%), var(--popup-translate-y, 0%));
+  transform-origin: center var(--popup-origin-y, top);
+  border-top: var(--popup-border-top);
+  border-bottom: var(--popup-border-bottom);
+  transition: grid-template-rows 300ms cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0ms linear 50ms;
+  overflow: hidden;
+  padding: 1rem 1rem 0.625rem;
+  cursor: default;
 }
 
 .repulsion-lists-module .repulsion-list-chip-popup p {
-  margin: 0;
-  font-size: 0.875rem;
-  line-height: 1.8;
+  margin: 0 0 0.625rem;
+  font-size: 1rem;
+}
+
+.repulsion-lists-module .repulsion-list-chip-popup span {
+  color: var(--repulsion-list-light-muted);
+  font-size: 0.8rem;
+}
+
+.repulsion-lists-module [data-state=proximity] .counter,
+.repulsion-lists-module [data-state=active] .counter,
+.repulsion-lists-module [data-state=closing] .counter {
+  display: flex;
+  opacity: 1;
+  scale: 1;
 }
 
 .repulsion-lists-module [data-state=active],
 .repulsion-lists-module [data-state=closing] {
-  z-index: 5;
+  z-index: 10;
 }
 
 .repulsion-lists-module [data-state=active] .repulsion-list-chip-label,
 .repulsion-lists-module [data-state=closing] .repulsion-list-chip-label {
   color: var(--repulsion-list-text-light);
   background: var(--repulsion-list-dark);
+  min-width: 18.75rem;
 }
 
 .repulsion-lists-module [data-state=active] .repulsion-list-chip-control {
@@ -5164,26 +5227,65 @@ body > * .in600 {
 }
 
 .repulsion-lists-module [data-state=active] .repulsion-list-chip-popup {
-  --repulsion-list-chip-grid-rows: 1fr;
+  pointer-events: auto;
   opacity: 1;
 }
 
-.BunmyakuTeaserSection {
-  min-height: 100lvh;
-  place-items: center;
-  background: var(--TC);
-  color: var(--WH);
+.repulsion-lists-module [data-state=closing] .repulsion-list-chip-popup {
+  pointer-events: none;
+  opacity: 0;
 }
 
-.BunmyakuTeaserCanvasPlaceholder {
-  display: grid;
-  width: min(42vw, 18rem);
-  aspect-ratio: 1;
-  place-items: center;
-  border: 1px solid currentColor;
-  border-radius: 999px;
-  font-family: var(--Ship);
-  font-size: clamp(5rem, 18vw, 16rem);
-  line-height: 1;
-  opacity: 0.32;
+.repulsion-lists-module [data-state=active] .emoji {
+  animation: repulsion_lists_emoji_rise var(--random-duration, 5s) ease-out var(--random-delay, 0s) forwards;
+}
+
+@keyframes repulsion_lists_emoji_rise {
+  0% {
+    transform: translate(-50%) translateY(0) scale(var(--random-scale, 1));
+    opacity: 1;
+  }
+  70% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%) translateY(-200px) scale(var(--random-scale, 1));
+    opacity: 0;
+  }
+}
+@media (min-width: 1181px) {
+  .repulsion-lists-module .repulsion-lists-viewport {
+    display: block;
+  }
+  .repulsion-lists-module #repulsion-lists-card-container {
+    width: 100%;
+    height: auto;
+    margin-inline: 0;
+  }
+}
+@media (max-width: 767px) {
+  .repulsion-lists-module {
+    width: 100vw;
+    max-width: none;
+    margin-inline: calc(50% - 50vw);
+  }
+  .repulsion-lists-module .repulsion-lists-intro h3 {
+    font-size: clamp(2.6rem, 16vw, 5rem);
+  }
+  .repulsion-lists-module .repulsion-lists-viewport {
+    justify-content: flex-start;
+    padding-block: 3rem;
+  }
+  .repulsion-lists-module #repulsion-lists-card-container {
+    width: 1000px;
+    margin-inline: 100px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .repulsion-lists-module *,
+  .repulsion-lists-module *::before,
+  .repulsion-lists-module *::after {
+    animation: none !important;
+    transition-duration: 0ms !important;
+  }
 }
