@@ -259,10 +259,6 @@
   height: 100%;
 }
 
-.h-100lvh {
-  height: 100lvh;
-}
-
 .max-w-none {
   max-width: none;
 }
@@ -329,6 +325,14 @@
 
 .space-y-4 > :not([hidden]) ~ :not([hidden]) {
   margin-top: 1rem;
+}
+
+.gap {
+  gap: var(--gap);
+}
+
+.gapH {
+  gap: var(--gapH);
 }
 
 .gap-2 {

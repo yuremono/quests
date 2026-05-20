@@ -10,7 +10,7 @@ declare(strict_types=1);
 get_header();
 ?>
 
-<div class="page_main">
+<main id="primary" class="site-main page_main">
 <?php
 while ( have_posts() ) :
 	the_post();
@@ -38,7 +38,7 @@ while ( have_posts() ) :
 	<?php
 endwhile;
 ?>
-</div>
+</main>
 
 <?php
 get_footer();

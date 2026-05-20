@@ -63,7 +63,6 @@
 .w-full { width: 100%; }
 .w-screen { width: 100vw; }
 .h-full { height: 100%; }
-.h-100lvh { height: 100lvh; }
 .max-w-none { max-width: none; }
 .max-w-2xl { max-width: 42rem; }
 .min-h-screen { min-height: 100vh; }
@@ -81,6 +80,8 @@
 .overscroll-none { overscroll-behavior: none; }
 .outline-none { outline: none; }
 .space-y-4 > :not([hidden]) ~ :not([hidden]) { margin-top: 1rem; }
+.gap { gap: var(--gap); }
+.gapH { gap: var(--gapH); }
 .gap-2 { gap: 0.5rem; }
 .gap-4 { gap: 1rem; }
 .gap-8 { gap: 2rem; }

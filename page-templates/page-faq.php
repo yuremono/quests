@@ -18,8 +18,8 @@ while ( have_posts() ) :
 	the_post();
 	$page_id = get_the_ID();
 
-	$faq_hero_kicker = (string) theme_page_meta( $page_id, 'faq_hero_kicker', 'FAQ' );
-	$faq_hero_lead   = (string) theme_page_meta(
+	$faq_hero_kicker  = (string) theme_page_meta( $page_id, 'faq_hero_kicker', 'FAQ' );
+	$faq_hero_lead    = (string) theme_page_meta(
 		$page_id,
 		'faq_hero_lead',
 		'キーボードでも開閉しやすいよう summary にフォーカスリングを付けています。詳細は本文ブロック側にも追記できます。'

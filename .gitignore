@@ -1,5 +1,6 @@
 /vendor/
 /node_modules/
+/assets/theme.css.tmp
 
 # Local/editor files
 /.vscode/
@@ -18,3 +19,7 @@
 *.log
 /.cache/
 /.phpunit.result.cache
+
+# Generated local release/export artifacts
+/dist/
+/exports/

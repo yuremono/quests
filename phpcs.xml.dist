@@ -2,11 +2,31 @@
 <ruleset name="portfolio-corporate">
 	<description>PHP_CodeSniffer rules for this theme (WordPress Coding Standards).</description>
 
+	<arg name="extensions" value="php"/>
+
 	<file>.</file>
 	<exclude-pattern>*/vendor/*</exclude-pattern>
+	<exclude-pattern>*/node_modules/*</exclude-pattern>
+	<exclude-pattern>*/assets/*</exclude-pattern>
+	<exclude-pattern>*/tools/*</exclude-pattern>
+	<exclude-pattern>*/.codex/*</exclude-pattern>
+	<exclude-pattern>*/.memsearch/*</exclude-pattern>
 
 	<!-- Theme templates often use hyphenated root filenames (e.g. front-page.php). -->
 	<rule ref="WordPress.Files.FileName.NotHyphenatedLowercase">
+		<severity>0</severity>
+	</rule>
+
+	<!-- This theme defines the gettext domain once as THEME_GETTEXT_DOMAIN. -->
+	<rule ref="WordPress.WP.I18n.NonSingularStringLiteralTextDomain">
+		<severity>0</severity>
+	</rule>
+
+	<!-- setup.php contains a small Walker class next to related menu functions. -->
+	<rule ref="Squiz.Classes.ClassFileName.NoMatch">
+		<severity>0</severity>
+	</rule>
+	<rule ref="Generic.Files.OneObjectStructurePerFile.MultipleFound">
 		<severity>0</severity>
 	</rule>
 

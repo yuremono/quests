@@ -12,7 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Register ACF groups for page templates (called from theme_register_acf).
+ * Register ACF groups for page templates.
  */
 function theme_register_acf_page_template_groups(): void {
 	if ( ! function_exists( 'acf_add_local_field_group' ) ) {
@@ -1414,3 +1414,4 @@ function theme_register_acf_page_template_groups(): void {
 
 	// phpcs:enable WordPress.Arrays.ArrayDeclarationSpacing.AssociativeArrayFound
 }
+add_action( 'acf/init', 'theme_register_acf_page_template_groups' );

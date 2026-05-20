@@ -18,14 +18,14 @@ while ( have_posts() ) :
 	the_post();
 	$page_id = get_the_ID();
 
-	$concept_hero_kicker = (string) theme_page_meta( $page_id, 'concept_hero_kicker', 'Concept' );
-	$concept_hero_lead   = (string) theme_page_meta(
+	$concept_hero_kicker     = (string) theme_page_meta( $page_id, 'concept_hero_kicker', 'Concept' );
+	$concept_hero_lead       = (string) theme_page_meta(
 		$page_id,
 		'concept_hero_lead',
 		'ブランドの芯となるメッセージをリードとピラーで整理する構成です。本文ブロックでは詳細ケーススタディやギャラリーを続けられます。'
 	);
-	$concept_lead_heading = (string) theme_page_meta( $page_id, 'concept_lead_heading', 'リード' );
-	$concept_lead_body    = (string) theme_page_meta(
+	$concept_lead_heading    = (string) theme_page_meta( $page_id, 'concept_lead_heading', 'リード' );
+	$concept_lead_body       = (string) theme_page_meta(
 		$page_id,
 		'concept_lead_body',
 		'暮らしと土地のあいだを設計するとき、まず問うのは「誰にとっての心地よさか」。法令や効率だけでは届かない距離感まで含めて、合意に耐えるストーリーを組み立てます（デモ文言）。'

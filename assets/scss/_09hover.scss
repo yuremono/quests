@@ -359,6 +359,9 @@ a.label {
                 color: var(--TLC);
         }
 
+        --btnBG: transparent;
+        background-color: unset;
+
         line-height: 1.125;
         // line-height: var(--btnH);
         font-size: var(--TLFZ);

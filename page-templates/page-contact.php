@@ -30,31 +30,31 @@ while ( have_posts() ) :
 	the_post();
 	$page_id = get_the_ID();
 
-	$contact_hero_kicker = (string) theme_page_meta( $page_id, 'contact_hero_kicker', 'Contact' );
-	$contact_hero_lead   = (string) theme_page_meta(
+	$contact_hero_kicker    = (string) theme_page_meta( $page_id, 'contact_hero_kicker', 'Contact' );
+	$contact_hero_lead      = (string) theme_page_meta(
 		$page_id,
 		'contact_hero_lead',
 		'ご質問・ご相談は電話またはメールにてご連絡ください。入力フォームをお使いの際は、この下のご案内に沿って本文ブロックまたはショートコードをご利用いただけます。'
 	);
-	$contact_summary = (string) theme_page_meta(
+	$contact_summary        = (string) theme_page_meta(
 		$page_id,
 		'contact_summary',
 		'内容を確認のうえ担当より折り返しご連絡します。自動音声のみの時間帯を除き、日中は担当が対応する想定です。'
 	);
-	$contact_phone_heading = (string) theme_page_meta( $page_id, 'contact_phone_heading', 'お電話' );
-	$contact_phone_note    = (string) theme_page_meta(
+	$contact_phone_heading  = (string) theme_page_meta( $page_id, 'contact_phone_heading', 'お電話' );
+	$contact_phone_note     = (string) theme_page_meta(
 		$page_id,
 		'contact_phone_note',
 		'平日のご案内時間帯のみ担当が対応いたします（例示文言）。'
 	);
-	$contact_mail_heading = (string) theme_page_meta( $page_id, 'contact_mail_heading', 'メール' );
-	$contact_mail_note    = (string) theme_page_meta(
+	$contact_mail_heading   = (string) theme_page_meta( $page_id, 'contact_mail_heading', 'メール' );
+	$contact_mail_note      = (string) theme_page_meta(
 		$page_id,
 		'contact_mail_note',
 		'折り返しまでに時間を要する場合があります。'
 	);
-	$contact_form_heading = (string) theme_page_meta( $page_id, 'contact_form_heading', 'フォームでのお問い合わせ' );
-	$contact_form_note    = (string) theme_page_meta(
+	$contact_form_heading   = (string) theme_page_meta( $page_id, 'contact_form_heading', 'フォームでのお問い合わせ' );
+	$contact_form_note      = (string) theme_page_meta(
 		$page_id,
 		'contact_form_note',
 		'Contact Form 7 などのプラグインを導入する場合、この下のページ本文にショートコードやフォームブロックを追加してください。'

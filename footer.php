@@ -1,17 +1,16 @@
 <?php
 /**
- * Footer template (contact block reads front-page ACF via helpers).
+ * Footer template.
  *
  * @package Theme
  */
 
 declare(strict_types=1);
 
-if (!defined('ABSPATH')) {
+if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 ?>
-</main>
 <?php wp_footer(); ?>
 </body>
 </html>

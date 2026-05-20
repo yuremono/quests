@@ -18,8 +18,8 @@ while ( have_posts() ) :
 	the_post();
 	$page_id = get_the_ID();
 
-	$services_hero_kicker = (string) theme_page_meta( $page_id, 'services_hero_kicker', 'Services' );
-	$services_hero_lead   = (string) theme_page_meta(
+	$services_hero_kicker  = (string) theme_page_meta( $page_id, 'services_hero_kicker', 'Services' );
+	$services_hero_lead    = (string) theme_page_meta(
 		$page_id,
 		'services_hero_lead',
 		'主なサービス領域をカードで示す構成例です。下の説明は編集画面の本文との併せ持ちにもかかわらず、この枠のみ静的なデモにできます。'

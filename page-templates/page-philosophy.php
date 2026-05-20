@@ -18,8 +18,8 @@ while ( have_posts() ) :
 	the_post();
 	$page_id = get_the_ID();
 
-	$philosophy_hero_kicker = (string) theme_page_meta( $page_id, 'philosophy_hero_kicker', 'Philosophy' );
-	$philosophy_hero_lead   = (string) theme_page_meta(
+	$philosophy_hero_kicker   = (string) theme_page_meta( $page_id, 'philosophy_hero_kicker', 'Philosophy' );
+	$philosophy_hero_lead     = (string) theme_page_meta(
 		$page_id,
 		'philosophy_hero_lead',
 		'プロセスを番号付きステップで示し、タイムラインと異なる「順序」の読みやすさを狙ったレイアウトです。'
@@ -59,7 +59,7 @@ while ( have_posts() ) :
 		'philosophy_timeline_note',
 		'設計会社側の変遷を会社概要とは別角度でサブに載せる例です（実データに差し替えください）。'
 	);
-	$timeline = array(
+	$timeline                    = array(
 		array(
 			'label' => (string) theme_page_meta( $page_id, 'philosophy_timeline_1_label', '試行期' ),
 			'desc'  => (string) theme_page_meta( $page_id, 'philosophy_timeline_1_desc', '地域プロジェクトでの実証とレビューのサイクル確立' ),

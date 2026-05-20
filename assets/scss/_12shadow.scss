@@ -62,6 +62,8 @@
 .txshtx{text-shadow: var(--txshtx);}
 // .txshbc{text-shadow: var(--txshbc);}
 
+.WTS {-webkit-text-stroke: var(--WTS);paint-order: stroke;}
+
 .txstwh{-webkit-text-stroke: var(--stw) var(--WH);paint-order: stroke;}
 .txstbk{-webkit-text-stroke: var(--stw) var(--BK);paint-order: stroke;}  
 // .txstmc{-webkit-text-stroke: var(--stw) var(--mc);paint-order: stroke;}

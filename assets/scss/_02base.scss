@@ -95,12 +95,11 @@ img, video {
 // h4 {// --h3FZ
 //     font-size: var(--h3FZ);
 // }
-main {// --PX
-	padding-inline: var(--PX);
 
+:where(.PageRoot>main) {
+        padding-inline: var(--PX);
 }
-
-:where(main>*) {
+:where(.PageRoot>main>*) {
 
 	// --wid, --MY
 	//ページ内コンテンツ div の初期設定_
@@ -118,7 +117,6 @@ main {// --PX
 	}
 }
     
-
 
 // *****レイアウト ラッパー制御  主要変数クラス
 .into {// --into
@@ -148,5 +146,44 @@ main {// --PX
 .outL {
 	margin-left: var(--out);
 	max-width: unset;
+}
+
+// Next.tsx PageRoot className（tailwind.scss に未移植の [--*] 相当）
+html:has([data-portfolio-page]) {
+	--MC: var(--GR);
+}
+
+:where(.PageRoot) {
+	--innerPX: var(--PX);
+	--Eng: var(--Jost);
+	--San: var(--Zen);
+	--h3FZ: 1.5em;
+	--dropBG: var(--WH);
+	--dropC: var(--TC);
+	--WTS: var(--tsw) var(--TC30);
+
+	font-size: var(--FZ);
+	overflow-x: clip;
+	font-family: var(--FF);
+	font-weight: var(--FW);
+	line-height: var(--LH);
+	letter-spacing: var(--LS);
+	color: var(--foreground);
+	font-style: normal;
+	background-color: var(--background);
+	transition: 600ms;
+	width: 100%;
+
+	svg {
+		display: inline-block;
+	}
+
+	.phosphor_icon {
+		flex-shrink: 0;
+	}
+
+	[data-bunmyaku-teaser] > .WTS {
+		--WTS: var(--tsw) var(--BC50);
+	}
 }
 

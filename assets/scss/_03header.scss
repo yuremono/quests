@@ -1,4 +1,4 @@
-@use "mixin"as *;
+@use "mixin" as *;
 
 
 
@@ -773,7 +773,6 @@
                                                 padding-inline: var(--btnPX);
                                                 font-size: var(--btnFZ);
                                                 border-radius: var(--btnRad);
-                                                background-color: var(--WH);
                                                 display: inline-flex;
                                                 align-items: center;
                                                 gap: var(--btnG);
@@ -1006,10 +1005,16 @@
                         color: var(--AC);
                 }
 
-                @apply h-full pointer-events-none;
+                pointer-events: none;
+                height: 100%;
 
                 .HeaderInner {
-                        @apply px-0 flex-col items-end justify-between h-full;
+                        height: 100%;
+                        flex-direction: column;
+                        align-items: flex-end;
+                        justify-content: space-between;
+                        padding-left: 0px;
+                        padding-right: 0px;
 
                         >* {
                                 pointer-events: auto;
@@ -1018,7 +1023,14 @@
                 }
 
                 .HeaderLogo {
-                        @apply absolute w-[var(--logoW)] top-1/2 left-0 translate-y-[-50%] pointer-events-auto h-auto;
+                        pointer-events: auto;
+                        position: absolute;
+                        top: 50%;
+                        left: 0px;
+                        height: auto;
+                        width: var(--logoW);
+                        --tw-translate-y: -50%;
+                        transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
                         background: url(/images/clip01.png) repeat center/20vw;
                         filter: grayscale(50%);
                         border-radius: 0 999px 999px 0;
@@ -1055,19 +1067,30 @@
                 }
 
                 .HeaderMenu {
-                        @apply top-2 right-2;
+                        top: 0.5rem;
+                        right: 0.5rem;
                 }
 
                 .HeaderNav {
-                        @apply h-[--head];
+                        height: var(--head);
                 }
 
                 .HeaderUl {
-                        @apply flex flex-wrap items-center justify-center gap-1 p-2;
+                        display: flex;
+                        flex-wrap: wrap;
+                        align-items: center;
+                        justify-content: center;
+                        gap: 0.25rem;
+                        padding: 0.5rem;
                 }
 
                 .HeaderItems {
-                        @apply flex flex-col items-end text-right p-2 gap-0;
+                        display: flex;
+                        flex-direction: column;
+                        align-items: flex-end;
+                        gap: 0px;
+                        padding: 0.5rem;
+                        text-align: right;
 
                         @include menu {
                                 order: 3;
@@ -1075,11 +1098,12 @@
                 }
 
                 .HeaderItems>a {
-                        @apply px-[--headG];
+                        padding-left: var(--headG);
+                        padding-right: var(--headG);
                 }
 
                 .DropIcon {
-                        @apply ml-1;
+                        margin-left: 0.25rem;
                 }
 
                 .NavInner ul a {
@@ -1114,10 +1138,16 @@
                         color: var(--AC);
                 }
 
-                @apply h-full pointer-events-none;
+                pointer-events: none;
+                height: 100%;
 
                 .HeaderInner {
-                        @apply px-0 flex-col items-end justify-between h-full;
+                        height: 100%;
+                        flex-direction: column;
+                        align-items: flex-end;
+                        justify-content: space-between;
+                        padding-left: 0px;
+                        padding-right: 0px;
 
                         >* {
                                 pointer-events: auto;
@@ -1126,14 +1156,25 @@
                 }
 
                 .HeaderNav {
-                        @apply absolute top-1/2 left-0 translate-y-[-50%] pointer-events-auto z-[100] w-[--logoW] aspect-[1/2];
+                        pointer-events: auto;
+                        position: absolute;
+                        top: 50%;
+                        left: 0px;
+                        z-index: 100;
+                        aspect-ratio: 1/2;
+                        width: var(--logoW);
+                        --tw-translate-y: -50%;
+                        transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 
                         ul {
-                                @apply grid;
+                                display: grid;
                         }
 
                         li {
-                                @apply py-0 content-center h-[unset];
+                                height: unset;
+                                align-content: center;
+                                padding-top: 0px;
+                                padding-bottom: 0px;
                                 background: linear-gradient(var(--TC), var(--TC)) no-repeat center/100% 1px;
                                 background-color: var(--GR10);
                         }
@@ -1214,7 +1255,15 @@
                 }
 
                 .HeaderLogo {
-                        @apply absolute w-[var(--logoW)] top-1/2 left-0 translate-y-[-50%] pointer-events-auto h-auto z-[1000];
+                        pointer-events: auto;
+                        position: absolute;
+                        top: 50%;
+                        left: 0px;
+                        z-index: 1000;
+                        height: auto;
+                        width: var(--logoW);
+                        --tw-translate-y: -50%;
+                        transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
                         border-radius: 0 999px 999px 0;
                         overflow: hidden;
                         border-left: 0;
@@ -1270,11 +1319,17 @@
                 }
 
                 .HeaderMenu {
-                        @apply top-2 right-2;
+                        top: 0.5rem;
+                        right: 0.5rem;
                 }
 
                 .HeaderItems {
-                        @apply flex flex-col items-end text-right p-2 gap-0;
+                        display: flex;
+                        flex-direction: column;
+                        align-items: flex-end;
+                        gap: 0px;
+                        padding: 0.5rem;
+                        text-align: right;
 
                         @include menu {
                                 order: 3;
@@ -1282,11 +1337,12 @@
                 }
 
                 .HeaderItems>a {
-                        @apply px-[--headG];
+                        padding-left: var(--headG);
+                        padding-right: var(--headG);
                 }
 
                 .DropIcon {
-                        @apply ml-1;
+                        margin-left: 0.25rem;
                 }
 
                 .NavInner ul a {
@@ -1302,10 +1358,16 @@
 
         &.HeaderCylinder {
                 --logoW:8rem;
-                @apply h-full pointer-events-none;
+                pointer-events: none;
+                height: 100%;
 
                 .HeaderInner {
-                        @apply px-0 flex-col items-end justify-between h-full;
+                        height: 100%;
+                        flex-direction: column;
+                        align-items: flex-end;
+                        justify-content: space-between;
+                        padding-left: 0px;
+                        padding-right: 0px;
 
                         >* {
                                 pointer-events: auto;
@@ -1313,7 +1375,20 @@
                 }
 
                 .HeaderCylinderLogo {
-                        @apply z-[1000] absolute w-[calc(var(--logoW)/3*2)] lg:w-[var(--logoW)] top-0 left-0 pointer-events-auto h-auto  p-0 border-0 lg:top-1/2 lg:translate-y-[-52.5%]  ;
+                        pointer-events: auto;
+                        position: absolute;
+                        top: 0px;
+                        left: 0px;
+                        z-index: 1000;
+                        height: auto;
+                        width: calc(var(--logoW) / 3 * 2);
+                        border-width: 0px;
+                        padding: 0px;
+                        @media (min-width: 1024px) {
+                        	top: 50%;
+                        	width: var(--logoW);
+                        	translate: 0 -52.5%;
+                        }
                         appearance: none;
                         background: var(--TR);
                         // border-radius: 0 999px 999px 0;
@@ -1322,21 +1397,49 @@
                         cursor: pointer;
                         
                         .LogoCylinder {
-                                @apply  w-[calc(var(--logoW)/3*2)] lg:w-[var(--logoW)]   ;
+                                width: calc(var(--logoW) / 3 * 2);
                                 aspect-ratio: 1;
                                 display: block;
+
+                                @media (min-width: 1024px) {
+                                	width: var(--logoW);
+                                }
                         }
-                        
+
                         .LogoLoading {
-                                @apply  w-[calc(var(--logoW)/3*2)] lg:w-[var(--logoW)]   ;
+                                width: calc(var(--logoW) / 3 * 2);
                                 border-radius: inherit;
+
+                                @media (min-width: 1024px) {
+                                	width: var(--logoW);
+                                }
                         }
                 }
                 .HeaderAnotation{
                         --annoteInterval: 1.5s;
-                        @apply absolute left-[0] top-0 text-xs py-2 lg:p-4 w-full  bottom-0  lg:top-[auto] grid font-medium whitespace-nowrap tracking-[-0em];
+                        position: absolute;
+                        left: 0;
+                        top: 0;
+                        bottom: 0;
+                        display: grid;
+                        width: 100%;
+                        white-space: nowrap;
+                        padding-top: 0.5rem;
+                        padding-bottom: 0.5rem;
+                        font-size: 0.75rem;
+                        font-weight: 500;
+                        letter-spacing: 0em;
+
+                        &.WTS {
+                                --WTS: var(--tsw) var(--TC30);
+                                color: var(--BC);
+                        }
+                        @media (min-width: 1024px) {
+                        	top: auto;
+                        	padding: 1rem;
+                        }
                         >span{
-                                @apply [grid-area:1/1];
+                                grid-area: 1/1;
                                 animation: header_anotation_toggle calc(var(--annoteInterval) * 2) linear infinite;
                                 &:nth-child(2){
                                         animation-delay: calc(var(--annoteInterval) * -1);
@@ -1348,14 +1451,35 @@
                 // }
 
                 .HeaderNav {
-                        @apply absolute top-1/2 left-0 translate-y-[-52.5%]  z-[100] w-full py-4 lg:py-0 lg:w-[--logoW]  justify-start  px-0 pointer-events-none ;
+                        pointer-events: none;
+                        position: absolute;
+                        top: 50%;
+                        left: 0px;
+                        z-index: 100;
+                        width: 100%;
+                        translate: 0 -52.5%;
+                        justify-content: flex-start;
+                        padding-block: 1rem;
+                        padding-inline: 0;
+                        @media (min-width: 1024px) {
+                        	width: var(--logoW);
+                        	padding-block: 0;
+                        	background: var(--TR);
+                        }
 
                         @include menu {
                                 display: block;
                         }
 
                         .NavUl {
-                                @apply grid justify-start lg:justify-end;
+                                display: grid;
+                                justify-content: flex-start;
+                                margin: 0;
+                                padding: 0;
+                                list-style: none;
+                                @media (min-width: 1024px) {
+                                	justify-content: flex-end;
+                                }
                         }
 
                         .NavLi {
@@ -1364,19 +1488,33 @@
                                 @include max-lg {
                                         --navX: 0.1;
                                 }
-                                @apply text-lg lg:text-base  px-2 py-0 my-[1.5lvh]  block content-center  h-[unset] ;
+                                margin-top: 1.5lvh;
+                                margin-bottom: 1.5lvh;
+                                display: block;
+                                height: unset;
+                                align-content: center;
+                                padding-left: 0.5rem;
+                                padding-right: 0.5rem;
+                                padding-top: 0px;
+                                padding-bottom: 0px;
+                                font-size: 1.125rem;
+                                @media (min-width: 1024px) {
+                                	font-size: 1rem;
+                                }
                                 // background: linear-gradient(var(--TC), var(--TC)) no-repeat center/100% 1px;
                                 background-color: var(--foreground);
                                 color: var(--background);
                                 transform: translate(0, var(--navClosedY));
                                 transition: var(--trans);
                                 opacity: 0;
+                                pointer-events: none;
                                 width: fit-content;
 
                         }
 
                         a,button {
-                                @apply align-top whitespace-nowrap;
+                                white-space: nowrap;
+                                vertical-align: top;
 
                         }
 
@@ -1515,7 +1653,11 @@
 
                 &[data-nav-open=true] {
                         .HeaderNav {
-                                @apply bg-BC lg:bg-[--TR];
+                                --tw-bg-opacity: 1;
+                                background-color: color-mix(in srgb, transparent, var(--BC) calc(var(--tw-bg-opacity, 1) * 100%));
+                                @media (min-width: 1024px) {
+                                	background-color: var(--TR);
+                                }
                         }
                         .HeaderNav .NavLi {
                                 opacity: 1;
@@ -1557,11 +1699,17 @@
                         color: var(--AC);
                 }
 
-                @apply h-full pointer-events-none;
+                pointer-events: none;
+                height: 100%;
                 font-size: 1.25rem;
 
                 .HeaderInner {
-                        @apply px-0 flex-col items-end justify-between h-full;
+                        height: 100%;
+                        flex-direction: column;
+                        align-items: flex-end;
+                        justify-content: space-between;
+                        padding-left: 0px;
+                        padding-right: 0px;
 
                         >* {
                                 pointer-events: auto;
@@ -1570,19 +1718,33 @@
                 }
 
                 .HeaderNav {
-                        @apply absolute top-0 left-1/2 translate-x-[-50%] pointer-events-auto z-[100] h-[unset];
+                        pointer-events: auto;
+                        position: absolute;
+                        top: 0px;
+                        left: 50%;
+                        z-index: 100;
+                        height: unset;
+                        --tw-translate-x: -50%;
+                        transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 
                         --listH: 2.5em;
                         --listN: 3;
 
                         ul {
-                                @apply block bg-MC/90 aspect-[2/1];
+                                display: block;
+                                aspect-ratio: 2/1;
+                                background-color: color-mix(in srgb, transparent, var(--MC) calc(0.9 * 100%));
                                 border-radius: 0 0 999px 999px;
                                 height: calc(var(--listH) * var(--listN));
                         }
 
                         li {
-                                @apply p-0 h-auto min-h-[--listH] content-center w-auto text-center;
+                                height: auto;
+                                min-height: var(--listH);
+                                width: auto;
+                                align-content: center;
+                                padding: 0px;
+                                text-align: center;
                                 background: linear-gradient(var(--TC), var(--TC)) no-repeat center/ 1px 100%, linear-gradient(var(--TC), var(--TC)) no-repeat center/100% 1px;
                                 background-color: var(--GR10);
                                 display: inline-block;
@@ -1675,7 +1837,14 @@
                 }
 
                 .HeaderLogo {
-                        @apply absolute w-[var(--logoW)] top-1/2 left-0 translate-y-[-50%] pointer-events-auto h-auto;
+                        pointer-events: auto;
+                        position: absolute;
+                        top: 50%;
+                        left: 0px;
+                        height: auto;
+                        width: var(--logoW);
+                        --tw-translate-y: -50%;
+                        transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
                         background: url(/images/clip01.png) repeat center/20vw;
                         filter: grayscale(50%);
                         border-radius: 0 999px 999px 0;
@@ -1713,13 +1882,19 @@
                 }
 
                 .HeaderMenu {
-                        @apply top-2 right-2;
+                        top: 0.5rem;
+                        right: 0.5rem;
                 }
 
 
 
                 .HeaderItems {
-                        @apply flex flex-col items-end text-right p-2 gap-0;
+                        display: flex;
+                        flex-direction: column;
+                        align-items: flex-end;
+                        gap: 0px;
+                        padding: 0.5rem;
+                        text-align: right;
 
                         @include menu {
                                 order: 3;
@@ -1727,11 +1902,12 @@
                 }
 
                 .HeaderItems>a {
-                        @apply px-[--headG];
+                        padding-left: var(--headG);
+                        padding-right: var(--headG);
                 }
 
                 .DropIcon {
-                        @apply ml-1;
+                        margin-left: 0.25rem;
                 }
 
                 .NavInner ul a {
@@ -2391,6 +2567,7 @@
         }
 
         .DropUl {
+                list-style: none;
                 transition: var(--trans) allow-discrete;
                 transition:
                         opacity var(--trans),
@@ -2841,6 +3018,7 @@
         }
 
         .DropUl {
+                list-style: none;
                 width: 100%;
                 overflow: hidden;
                 padding-left: 1em;
@@ -2865,7 +3043,7 @@
                         transition: var(--trans);
                 }
                 svg {
-                        @apply shrink-0;
+                        flex-shrink: 0;
                 }
                 &:is(ul.show>*) {
                         grid-template-rows: 1fr;

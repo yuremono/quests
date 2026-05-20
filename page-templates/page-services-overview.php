@@ -18,8 +18,8 @@ while ( have_posts() ) :
 	the_post();
 	$page_id = get_the_ID();
 
-	$sv_kicker = (string) theme_page_meta( $page_id, 'sv_overview_hero_kicker', 'Services overview' );
-	$sv_lead   = (string) theme_page_meta(
+	$sv_kicker       = (string) theme_page_meta( $page_id, 'sv_overview_hero_kicker', 'Services overview' );
+	$sv_lead         = (string) theme_page_meta(
 		$page_id,
 		'sv_overview_hero_lead',
 		'一覧性を優先したカードグリッドです。「サービス」テンプレより粒度を荒くし、 LP や資料への誘導を想定したダミー構成にしています。'

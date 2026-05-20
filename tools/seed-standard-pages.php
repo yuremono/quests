@@ -14,23 +14,22 @@
 declare(strict_types=1);
 
 // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- CLI script output only.
-defined('ABSPATH') || exit('Bootstrap WordPress before running this script (wp eval-file or require wp-load.php first).');
+defined( 'ABSPATH' ) || exit( 'Bootstrap WordPress before running this script (wp eval-file or require wp-load.php first).' );
 
 /**
  * Runs seed when loaded from WP bootstrap.
  */
-function theme_seed_standard_pages_maybe_run(): void
-{
-	if (! is_blog_installed()) {
+function theme_seed_standard_pages_maybe_run(): void {
+	if ( ! is_blog_installed() ) {
 		return;
 	}
 
-	$definitions = theme_seed_standard_pages_definitions();
+	$definitions      = theme_seed_standard_pages_definitions();
 	$page_ids_by_slug = array();
 
-	foreach ($definitions as $slug => $def) {
-		$existing = get_page_by_path($slug, OBJECT, 'page');
-		if ($existing instanceof WP_Post) {
+	foreach ( $definitions as $slug => $def ) {
+		$existing = get_page_by_path( $slug, OBJECT, 'page' );
+		if ( $existing instanceof WP_Post ) {
 			$page_ids_by_slug[ $slug ] = (int) $existing->ID;
 			continue;
 		}
@@ -44,8 +43,8 @@ function theme_seed_standard_pages_maybe_run(): void
 			'post_author'  => (int) get_current_user_id() ?: 1,
 		);
 
-		$page_id = wp_insert_post(wp_slash($postarr), true);
-		if ($page_id instanceof WP_Error || ! $page_id) {
+		$page_id = wp_insert_post( wp_slash( $postarr ), true );
+		if ( $page_id instanceof WP_Error || ! $page_id ) {
 			continue;
 		}
 
@@ -69,7 +68,7 @@ function theme_seed_standard_pages_maybe_run(): void
 		}
 	}
 
-	theme_seed_standard_pages_wire_primary_menu($page_ids_by_slug);
+	theme_seed_standard_pages_wire_primary_menu( $page_ids_by_slug );
 }
 
 /**
@@ -77,30 +76,29 @@ function theme_seed_standard_pages_maybe_run(): void
  *
  * @return array<string, array{title: string, content: string, template?: string}>
  */
-function theme_seed_standard_pages_definitions(): array
-{
+function theme_seed_standard_pages_definitions(): array {
 	return array(
-		'company'       => array(
+		'company'           => array(
 			'title'    => '会社概要',
 			'template' => 'page-templates/page-company.php',
 			'content'  => "<!-- wp:paragraph -->\n<p>ここは会社概要のプレースホルダーです。沿革、代表メッセージ、組織図などをブロック編集画面から追記してください。</p>\n<!-- /wp:paragraph -->",
 		),
-		'concept'       => array(
+		'concept'           => array(
 			'title'    => 'コンセプト',
 			'template' => 'page-templates/page-concept.php',
 			'content'  => "<!-- wp:paragraph -->\n<p>ブランドストーリーや三本柱に続く詳細説明は、このブロックから追加してください。</p>\n<!-- /wp:paragraph -->",
 		),
-		'philosophy'    => array(
+		'philosophy'        => array(
 			'title'    => '設計理念',
 			'template' => 'page-templates/page-philosophy.php',
 			'content'  => "<!-- wp:paragraph -->\n<p>番号ステップやタイムライン以外の補足・事例はここから編集できます。</p>\n<!-- /wp:paragraph -->",
 		),
-		'faq'           => array(
+		'faq'               => array(
 			'title'    => 'よくある質問',
 			'template' => 'page-templates/page-faq.php',
 			'content'  => "<!-- wp:paragraph -->\n<p>テンプレート上部のアコーディオン以外の Q&A やお問い合わせ誘導をブロックで追加してください。</p>\n<!-- /wp:paragraph -->",
 		),
-		'services'      => array(
+		'services'          => array(
 			'title'    => 'サービス',
 			'template' => 'page-templates/page-services.php',
 			'content'  => "<!-- wp:paragraph -->\n<p>提供サービスの説明プレースホルダーです。業務領域、強み、料金や流れについてブロックから編集してください。</p>\n<!-- /wp:paragraph -->",
@@ -110,17 +108,17 @@ function theme_seed_standard_pages_definitions(): array
 			'template' => 'page-templates/page-services-overview.php',
 			'content'  => "<!-- wp:paragraph -->\n<p>カードグリッド以外の詳細やダウンロード資料へのリンクは、この本文から追加してください。</p>\n<!-- /wp:paragraph -->",
 		),
-		'contact'       => array(
-			'title'     => 'お問い合わせ',
-			'template'  => 'page-templates/page-contact.php',
-			'content'   => "<!-- wp:paragraph -->\n<p>お問い合わせページの追加のご案内をこちらから編集できます（上部のレイアウトはテーマのテンプレートで出力されます）。</p>\n<!-- /wp:paragraph -->",
+		'contact'           => array(
+			'title'    => 'お問い合わせ',
+			'template' => 'page-templates/page-contact.php',
+			'content'  => "<!-- wp:paragraph -->\n<p>お問い合わせページの追加のご案内をこちらから編集できます（上部のレイアウトはテーマのテンプレートで出力されます）。</p>\n<!-- /wp:paragraph -->",
 		),
-		'privacy-policy' => array(
+		'privacy-policy'    => array(
 			'title'    => 'プライバシーポリシー',
 			'template' => 'page-templates/page-privacy-layout.php',
 			'content'  => "<!-- wp:paragraph -->\n<p>目次下部のこのエリアから、フォームや改定履歴などをブロックで追記してください。</p>\n<!-- /wp:paragraph -->",
 		),
-		'careers'       => array(
+		'careers'           => array(
 			'title'    => '採用情報',
 			'template' => 'page-templates/page-careers.php',
 			'content'  => "<!-- wp:paragraph -->\n<p>採用の募集概要・応募方法のプレースホルダーです。職種や勤務条件をブロック編集してください。</p>\n<!-- /wp:paragraph -->",
@@ -136,25 +134,24 @@ function theme_seed_standard_pages_definitions(): array
  *
  * @param array<string, int> $page_ids_by_slug Slug => post ID for known pages (may omit missing).
  */
-function theme_seed_standard_pages_wire_primary_menu(array $page_ids_by_slug): void
-{
+function theme_seed_standard_pages_wire_primary_menu( array $page_ids_by_slug ): void {
 	$registered = get_registered_nav_menus();
-	if (! isset($registered['primary'])) {
+	if ( ! isset( $registered['primary'] ) ) {
 		return;
 	}
 
-	$locations         = get_nav_menu_locations();
-	$already_assigned = isset($locations['primary']) ? (int) $locations['primary'] : 0;
+	$locations        = get_nav_menu_locations();
+	$already_assigned = isset( $locations['primary'] ) ? (int) $locations['primary'] : 0;
 
-	if ($already_assigned > 0) {
+	if ( $already_assigned > 0 ) {
 		$menu_id = $already_assigned;
 	} else {
 		$menu_name = 'Primary';
-		$menu      = wp_get_nav_menu_object($menu_name);
+		$menu      = wp_get_nav_menu_object( $menu_name );
 
-		if (! $menu) {
-			$created_id = wp_create_nav_menu($menu_name);
-			if ($created_id instanceof WP_Error || ! $created_id) {
+		if ( ! $menu ) {
+			$created_id = wp_create_nav_menu( $menu_name );
+			if ( $created_id instanceof WP_Error || ! $created_id ) {
 				return;
 			}
 			$menu_id = (int) $created_id;
@@ -165,11 +162,11 @@ function theme_seed_standard_pages_wire_primary_menu(array $page_ids_by_slug): v
 
 	// Build set of linked page IDs to avoid duplicates.
 	$existing_ids = array();
-	foreach ((array) wp_get_nav_menu_items($menu_id) as $item) {
-		if (! $item instanceof WP_Post) {
+	foreach ( (array) wp_get_nav_menu_items( $menu_id ) as $item ) {
+		if ( ! $item instanceof WP_Post ) {
 			continue;
 		}
-		if ((string) $item->object === 'page' && isset($item->object_id)) {
+		if ( (string) $item->object === 'page' && isset( $item->object_id ) ) {
 			$existing_ids[ (int) $item->object_id ] = true;
 		}
 	}
@@ -185,14 +182,14 @@ function theme_seed_standard_pages_wire_primary_menu(array $page_ids_by_slug): v
 		'careers',
 		'privacy-policy',
 	);
-	foreach ($order_slug as $slug) {
-		if (! isset($page_ids_by_slug[ $slug ])) {
+	foreach ( $order_slug as $slug ) {
+		if ( ! isset( $page_ids_by_slug[ $slug ] ) ) {
 			continue;
 		}
 
 		$pid = (int) $page_ids_by_slug[ $slug ];
 
-		if (isset($existing_ids[ $pid ])) {
+		if ( isset( $existing_ids[ $pid ] ) ) {
 			continue;
 		}
 
@@ -200,7 +197,7 @@ function theme_seed_standard_pages_wire_primary_menu(array $page_ids_by_slug): v
 			(int) $menu_id,
 			0,
 			array(
-				'menu-item-title'     => get_the_title($pid),
+				'menu-item-title'     => get_the_title( $pid ),
 				'menu-item-object-id' => $pid,
 				'menu-item-object'    => 'page',
 				'menu-item-type'      => 'post_type',
@@ -211,13 +208,13 @@ function theme_seed_standard_pages_wire_primary_menu(array $page_ids_by_slug): v
 		$existing_ids[ $pid ] = true;
 	}
 
-	if ($already_assigned > 0) {
+	if ( $already_assigned > 0 ) {
 		return;
 	}
 
-	$locations_final               = get_nav_menu_locations();
-	$locations_final['primary']    = $menu_id;
-	set_theme_mod('nav_menu_locations', $locations_final);
+	$locations_final            = get_nav_menu_locations();
+	$locations_final['primary'] = $menu_id;
+	set_theme_mod( 'nav_menu_locations', $locations_final );
 }
 
 theme_seed_standard_pages_maybe_run();

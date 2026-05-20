@@ -18,8 +18,8 @@ while ( have_posts() ) :
 	the_post();
 	$page_id = get_the_ID();
 
-	$company_hero_kicker = (string) theme_page_meta( $page_id, 'company_hero_kicker', 'Company profile' );
-	$company_hero_lead   = (string) theme_page_meta(
+	$company_hero_kicker      = (string) theme_page_meta( $page_id, 'company_hero_kicker', 'Company profile' );
+	$company_hero_lead        = (string) theme_page_meta(
 		$page_id,
 		'company_hero_lead',
 		'理念・沿革・概要を一覧できるコーポレート向けのレイアウトです。ヒーロー下の項目は編集画面の抜粋で差し替えられます。'

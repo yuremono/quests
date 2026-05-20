@@ -28,7 +28,7 @@ if ( '' === $contact_email_safe ) {
 		the_post();
 		$page_id = get_the_ID();
 
-		$struct_addr = trim( (string) theme_page_meta( $page_id, 'contact_struct_address_body', '' ) );
+		$struct_addr     = trim( (string) theme_page_meta( $page_id, 'contact_struct_address_body', '' ) );
 		$contact_address = '' !== $struct_addr
 			? $struct_addr
 			: trim(
@@ -38,14 +38,14 @@ if ( '' === $contact_email_safe ) {
 				)
 			);
 
-		$contact_struct_phone_heading = (string) theme_page_meta( $page_id, 'contact_struct_phone_heading', 'お電話' );
-		$contact_struct_phone_hint    = (string) theme_page_meta(
+		$contact_struct_phone_heading   = (string) theme_page_meta( $page_id, 'contact_struct_phone_heading', 'お電話' );
+		$contact_struct_phone_hint      = (string) theme_page_meta(
 			$page_id,
 			'contact_struct_phone_hint',
 			'自動音声のみの時間帯を除き、日中に担当が対応します。'
 		);
-		$contact_struct_mail_heading = (string) theme_page_meta( $page_id, 'contact_struct_mail_heading', 'メールフォームについて' );
-		$contact_struct_mail_body    = (string) theme_page_meta(
+		$contact_struct_mail_heading    = (string) theme_page_meta( $page_id, 'contact_struct_mail_heading', 'メールフォームについて' );
+		$contact_struct_mail_body       = (string) theme_page_meta(
 			$page_id,
 			'contact_struct_mail_body',
 			'Contact Form 7 などのプラグインを導入する場合、このブロック直下にショートコードやブロックを追加してください（デモ環境では未接続です）。'

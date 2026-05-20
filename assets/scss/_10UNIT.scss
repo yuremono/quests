@@ -1,53 +1,78 @@
-@use "mixin"as *;
+@use "mixin" as *;
 
 
 // ********** ヒーロー (.Hero) **********
 :where(.Hero) {
-        @apply grid;
+        display: grid;
 
         >* {
-                @apply z-[1] [grid-area:1/1];
+                z-index: 1;
+                grid-area: 1/1;
         }
 
         :where(.back) {
-                @apply w-full;
+                width: 100%;
 
                 >img {
-                        @apply w-full object-cover aspect-square md:aspect-auto;
+                        aspect-ratio: 1 / 1;
+                        width: 100%;
+                        object-fit: cover;
+                        @media (min-width: 768px) {
+                        	aspect-ratio: auto;
+                        }
                 }
         }
 
         .item {
-                @apply mt-0 content-center py-[--PX] px-[--into];
+                margin-top: 0px;
+                align-content: center;
+                padding-top: var(--PX);
+                padding-bottom: var(--PX);
+                padding-left: var(--into);
+                padding-right: var(--into);
         }
 }
 
 // ********** ホバー波形プレビュー (.WaveHover) **********
 // WaveHoverBody / WaveHoverCanvas は WaveHover.tsx が出力
 :where(.WaveHover) {
-        @apply relative isolate;
+        position: relative;
+        isolation: isolate;
 
         >.WaveHoverCanvas {
-                @apply pointer-events-none fixed left-0 top-[--head] z-[3] block bg-transparent opacity-0 transition-opacity duration-200;
+                pointer-events: none;
+                position: fixed;
+                left: 0px;
+                top: var(--head);
+                z-index: 3;
+                display: block;
+                background-color: transparent;
+                opacity: 0;
+                transition-property: opacity;
+                transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+                transition-duration: 200ms;
         }
 
         &:has(a:hover)>.WaveHoverCanvas {
-                @apply opacity-100;
+                opacity: 1;
         }
 }
 
 // ********** カードシリーズ (.Cards) **********
 :where(.Cards) {
         // --gap , --itemW
-        @apply flex flex-wrap gap-[--gap];
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--gap);
 
 
         // --- 1. アイテム基本設定 (デフォルト: 1列 / Flex) ---
         .item {
-                @apply w-[--itemW] mt-0;
+                margin-top: 0px;
+                width: var(--itemW);
 
                 img {
-                        @apply w-full;
+                        width: 100%;
                 }
 
         }
@@ -55,17 +80,21 @@
         // --- 2. モディファイア: レイヤー重ね合わせ (IsLayer) ---
         &.IsLayer {
                 .item {
-                        @apply grid;
+                        display: grid;
 
                         >* {
-                                @apply z-[1] [grid-area:1/1];
+                                z-index: 1;
+                                grid-area: 1/1;
                         }
 
                         figure {
-                                @apply w-full h-full m-0;
+                                margin: 0px;
+                                height: 100%;
+                                width: 100%;
 
                                 img {
-                                        @apply h-full object-cover;
+                                        height: 100%;
+                                        object-fit: cover;
                                 }
                         }
 
@@ -74,49 +103,58 @@
 
         &.IsGrow {
                 .item {
-                        @apply flex-1 w-auto;
+                        width: auto;
+                        flex: 1 1 0%;
                 }
         }
 
         // 固定幅
         &.IsFix {
                 --itemW: 240px;
-                @apply justify-center;
+                justify-content: center;
 
                 .item {
-                        @apply w-[--itemW];
+                        width: var(--itemW);
                 }
         }
 
         &.IsIcon {
                 --iconW: 5em;
-                @apply md:[--iconW:7.5em];
+                @media (min-width: 768px) {
+                	--iconW: 7.5em;
+                }
 
                 figure {
-                        @apply min-h-[--iconW] content-center;
+                        min-height: var(--iconW);
+                        align-content: center;
                 }
 
                 svg,
                 img {
-                        @apply max-w-[--iconW] mx-auto;
+                        margin-left: auto;
+                        margin-right: auto;
+                        max-width: var(--iconW);
                 }
         }
 
         &.IsRow {
                 .item {
-                        @apply flex-row;
+                        flex-direction: row;
 
                         >div {
-                                @apply flex-1;
+                                flex: 1 1 0%;
                         }
                 }
 
                 figure {
-                        @apply w-[--imgW];
+                        width: var(--imgW);
                 }
 
                 .box {
-                        @apply basis-full md:basis-auto;
+                        flex-basis: 100%;
+                        @media (min-width: 768px) {
+                        	flex-basis: auto;
+                        }
                 }
         }
 
@@ -128,11 +166,13 @@
 
                 .item {
                         &:nth-child(even) {
-                                @apply md:[margin-block:var(--shift)_var(--Nshift)];
+                                @media (min-width: 768px) {
+                                	margin-block: var(--shift) var(--Nshift);
+                                }
                         }
 
                         &:last-child {
-                                @apply mb-0;
+                                margin-bottom: 0px;
                         }
                 }
 
@@ -209,74 +249,130 @@
         &::details-content {
                 // 開閉アニメーション
                 // @apply h-0 overflow-hidden [transition:height_0.4s_ease,content-visibility_0.4s_allow-discrete];
-                @apply h-0 overflow-hidden [transition:var(--trans)_allow-discrete];
+                height: 0px;
+                overflow: hidden;
+                transition: var(--trans) allow-discrete;
                 
         }
 
         &[open]::details-content {
-                @apply h-auto;
+                height: auto;
         }
 
         summary {
-                @apply list-none outline-none cursor-pointer relative bg-[--qBG] p-[1em] pr-[2.5em] transition-all duration-[.4s];
+                position: relative;
+                cursor: pointer;
+                list-style-type: none;
+                background-color: var(--qBG);
+                padding: 1em;
+                padding-right: 2.5em;
+                outline: 2px solid transparent;
+                outline-offset: 2px;
+                transition-property: all;
+                transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+                transition-duration: 150ms;
+                transition-duration: .4s;
 
                 &:hover {
-                        @apply opacity-80;
+                        opacity: 0.8;
                 }
 
                 &::-webkit-details-marker {
-                        @apply hidden;
+                        display: none;
                 }
 
                 .ToggleIcon {
                         // 矢印アイコン（React コンポーネント）
-                        @apply text-[1.5em] absolute right-[1em] top-1/2 [translate:0_-50%] transition-all duration-[.4s];
+                        position: absolute;
+                        right: 1em;
+                        top: 50%;
+                        font-size: 1.5em;
+                        transition-property: all;
+                        transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+                        transition-duration: 150ms;
+                        transition-duration: .4s;
+                        translate: 0 -50%;
                 }
         }
 
         &[open] summary .ToggleIcon {
-                @apply [scale:1_-1];
+                scale: 1 -1;
         }
 
         >div {
-                @apply relative p-[1em] bg-[--aBG];
+                position: relative;
+                background-color: var(--aBG);
+                padding: 1em;
         }
 
         .has_img {
                 // 画像レイアウト（.has_img > figure + div の構造に対応）
-                @apply flex flex-row items-center flex-wrap gap-[1em] w-full;
+                display: flex;
+                width: 100%;
+                flex-direction: row;
+                flex-wrap: wrap;
+                align-items: center;
+                gap: 1em;
 
                 figure {
-                        @apply max-w-full order-1 w-[var(--imgW,30%)] ml-auto;
+                        order: 1;
+                        margin-left: auto;
+                        width: var(--imgW,30%);
+                        max-width: 100%;
 
                         img {
-                                @apply w-full h-auto block;
+                                display: block;
+                                height: auto;
+                                width: 100%;
                         }
                 }
 
                 >div {
-                        @apply flex-1;
+                        flex: 1 1 0%;
                 }
 
                 // 旧 max-md (not .bp-sm): モバイル figure 100% ml:0, md 以上で復元
                 &:not(.bp-sm) figure {
-                        @apply w-full ml-0 md:w-[var(--imgW,30%)] md:ml-auto;
+                        margin-left: 0px;
+                        width: 100%;
+                        @media (min-width: 768px) {
+                        	margin-left: auto;
+                        	width: var(--imgW,30%);
+                        }
                 }
 
                 // 旧 max-sm (.bp-sm): モバイル figure 100% ml:0, sm 以上で復元
                 &.bp-sm figure {
-                        @apply w-full ml-0 sm:w-[var(--imgW,30%)] sm:ml-auto;
+                        margin-left: 0px;
+                        width: 100%;
+                        @media (min-width: 640px) {
+                        	margin-left: auto;
+                        	width: var(--imgW,30%);
+                        }
                 }
         }
 
         &.IsQa {// --- モディファイア: IsQa (Q&Aスタイル) ---
                 summary,
                 >div {
-                        @apply pl-[4em];
+                        padding-left: 4em;
 
                         &:before {
                                 content: "";
-                                @apply font-[family-name:var(--bfFF)] text-[--bfC] bg-[--bfBG] block absolute left-[1em] top-1/2 -translate-y-1/2 rounded-[--bfRad] w-[2em] aspect-square content-center text-center;
+                                position: absolute;
+                                left: 1em;
+                                top: 50%;
+                                display: block;
+                                aspect-ratio: 1 / 1;
+                                width: 2em;
+                                --tw-translate-y: -50%;
+                                transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+                                align-content: center;
+                                border-radius: var(--bfRad);
+                                background-color: var(--bfBG);
+                                text-align: center;
+                                font-family: var(--bfFF);
+                                color: var(--bfC);
                         }
                 }
 
@@ -286,28 +382,43 @@
 
                 >div:before {
                         content: "A";
-                        @apply bg-[--abfBG];
+                        background-color: var(--abfBG);
                 }
         }
 
         &.IsSmall {// --- モディファイア: IsSmall ---
-                @apply w-fit;
+                width: fit-content;
                 summary{
-                        @apply text-[--gr] text-[1.2em] inline-block pl-0 pr-[1em] py-0;
+                        display: inline-block;
+                        padding-top: 0px;
+                        padding-bottom: 0px;
+                        padding-left: 0px;
+                        padding-right: 1em;
+                        font-size: 1.2em;
+                        color: var(--gr);
                         &:after {
                                 content: "+";
-                                @apply font-[family-name:var(--icon,inherit)] text-[#888] inline-block [transform-origin:100%_50%] text-[color:inherit] absolute right-0;
+                                position: absolute;
+                                right: 0px;
+                                display: inline-block;
+                                font-family: var(--icon,inherit);
+                                --tw-text-opacity: 1;
+                                color: rgb(136 136 136 / var(--tw-text-opacity, 1));
+                                color: inherit;
+                                transform-origin: 100% 50%;
                         }
                 }
                 &[open] summary:after {
                         content: "-";
-                        @apply [scale:1.5_1];
+                        scale: 1.5 1;
                 }
                 >div {
-                        @apply p-0 relative text-[0.875em];
+                        position: relative;
+                        padding: 0px;
+                        font-size: 0.875em;
                 }
                 summary:hover {
-                        @apply text-[--AC];
+                        color: var(--AC);
                 }
         }
 }
@@ -315,7 +426,7 @@
 // **********パネル=縦並びコンテンツ 画像任意 IsFlow IsRev imgW可変*************--gap --few
 :where(.Panel) {
         // --MY5, --bc, --mc, --sc, --rad, --gap, --imgW
-        @apply relative;
+        position: relative;
         --MY: 0em;
         --bg: var(--UN);
         --beforeFZ: 75%;
@@ -325,36 +436,54 @@
         --imgW: 30%;
 
         .item {
-                @apply bg-[--bg] w-full flex flex-wrap rounded-[--rad] p-[--PX] gap-[--gap] relative [counter-increment:cnt];
+                position: relative;
+                display: flex;
+                width: 100%;
+                flex-wrap: wrap;
+                gap: var(--gap);
+                border-radius: var(--rad);
+                background-color: var(--bg);
+                padding: var(--PX);
+                counter-increment: cnt;
 
                 +.item {
-                        @apply mt-[--MY];
+                        margin-top: var(--MY);
                 }
 
                 figure {
-                        @apply w-[var(--imgW,30%)];
+                        width: var(--imgW,30%);
 
                         &:where(.Panel .IsRev *) {
-                                @apply order-1;
+                                order: 1;
                         }
 
                         img {
-                                @apply w-full h-auto block;
+                                display: block;
+                                height: auto;
+                                width: 100%;
                         }
                 }
 
                 >div {
-                        @apply flex-1;
+                        flex: 1 1 0%;
                 }
 
                 // 旧 max-md (not .bp-sm): モバイル figure 100% order -1, md 以上で復元
                 &:not(.bp-sm) figure {
-                        @apply w-full  md:w-[var(--imgW,30%)] ;
+                        width: 100%;
+                        @media (min-width: 768px) {
+                        	width: var(--imgW,30%);
+                        }
                 }
 
                 // 旧 max-sm (.bp-sm): モバイル figure 100% order -1, sm 以上で復元
                 &.bp-sm figure {
-                        @apply w-full -order-1 sm:w-[var(--imgW,30%)] sm:[order:revert];
+                        order: -1;
+                        width: 100%;
+                        @media (min-width: 640px) {
+                        	width: var(--imgW,30%);
+                        	order: revert;
+                        }
                 }
         }
 
@@ -375,11 +504,19 @@
 
                         &:after {
                                 content: "";
-                                @apply block absolute left-1/2 w-[--afterW] aspect-square bg-[--afterBG] [top:calc(100%+calc(var(--MY)/2))] [transform:translate(-50%,-50%)] [clip-path:polygon(0_15%,50%_100%,100%_15%)];
+                                position: absolute;
+                                left: 50%;
+                                display: block;
+                                aspect-ratio: 1 / 1;
+                                width: var(--afterW);
+                                background-color: var(--afterBG);
+                                clip-path: polygon(0 15%,50% 100%,100% 15%);
+                                top: calc(100% + calc(var(--MY) / 2));
+                                transform: translate(-50%,-50%);
                         }
 
                         &:last-of-type:after {
-                                @apply hidden;
+                                display: none;
                         }
                 }
         }
@@ -390,10 +527,19 @@
 :where(.Flex55) {
         // --few, --gap
         >* {
-                @apply w-full md:w-[calc(50%-var(--gap)/2)];
+                width: 100%;
+                @media (min-width: 768px) {
+                	width: calc(50% - var(--gap) / 2);
+                }
         }
         &.bp-sm > * {
-                @apply w-full sm:w-[calc(50%-var(--gap)/2)] md:w-[calc(50%-var(--gap)/2)];
+                width: 100%;
+                @media (min-width: 640px) {
+                	width: calc(50% - var(--gap) / 2);
+                }
+                @media (min-width: 768px) {
+                	width: calc(50% - var(--gap) / 2);
+                }
         }
 }
 
@@ -402,18 +548,28 @@
         --few: 40%;
 
         >:where(:nth-child(1)) {
-                @apply w-full md:w-[calc(var(--few))];
+                width: 100%;
+                @media (min-width: 768px) {
+                	width: calc(var(--few));
+                }
         }
 
         >:where(:nth-child(2)) {
-                @apply w-full md:w-[calc(100%-var(--few)-var(--gap))];
+                width: 100%;
+                @media (min-width: 768px) {
+                	width: calc(100% - var(--few) - var(--gap));
+                }
         }
 
         &.bp-sm > :where(:nth-child(1)) {
-                @apply sm:w-[calc(var(--few))];
+                @media (min-width: 640px) {
+                	width: calc(var(--few));
+                }
         }
         &.bp-sm > :where(:nth-child(2)) {
-                @apply sm:w-[calc(100%-var(--few)-var(--gap))];
+                @media (min-width: 640px) {
+                	width: calc(100% - var(--few) - var(--gap));
+                }
         }
 }
 
@@ -422,18 +578,28 @@
         --few: 40%;
 
         >:where(:nth-child(1)) {
-                @apply w-full md:w-[calc(100%-var(--few)-var(--gap))];
+                width: 100%;
+                @media (min-width: 768px) {
+                	width: calc(100% - var(--few) - var(--gap));
+                }
         }
 
         >:where(:nth-child(2)) {
-                @apply w-full md:w-[calc(var(--few))];
+                width: 100%;
+                @media (min-width: 768px) {
+                	width: calc(var(--few));
+                }
         }
 
         &.bp-sm > :where(:nth-child(1)) {
-                @apply sm:w-[calc(100%-var(--few)-var(--gap))];
+                @media (min-width: 640px) {
+                	width: calc(100% - var(--few) - var(--gap));
+                }
         }
         &.bp-sm > :where(:nth-child(2)) {
-                @apply sm:w-[calc(var(--few))];
+                @media (min-width: 640px) {
+                	width: calc(var(--few));
+                }
         }
 }
 
@@ -442,18 +608,28 @@
         --few: 30%;
 
         >:where(:nth-child(1)) {
-                @apply w-full md:w-[calc(var(--few))];
+                width: 100%;
+                @media (min-width: 768px) {
+                	width: calc(var(--few));
+                }
         }
 
         >:where(:nth-child(2)) {
-                @apply w-full md:w-[calc(100%-var(--few)-var(--gap))];
+                width: 100%;
+                @media (min-width: 768px) {
+                	width: calc(100% - var(--few) - var(--gap));
+                }
         }
 
         &.bp-sm > :where(:nth-child(1)) {
-                @apply sm:w-[calc(var(--few))];
+                @media (min-width: 640px) {
+                	width: calc(var(--few));
+                }
         }
         &.bp-sm > :where(:nth-child(2)) {
-                @apply sm:w-[calc(100%-var(--few)-var(--gap))];
+                @media (min-width: 640px) {
+                	width: calc(100% - var(--few) - var(--gap));
+                }
         }
 }
 
@@ -462,18 +638,28 @@
         --few: 30%;
 
         >:where(:nth-child(1)) {
-                @apply w-full md:w-[calc(100%-var(--few)-var(--gap))];
+                width: 100%;
+                @media (min-width: 768px) {
+                	width: calc(100% - var(--few) - var(--gap));
+                }
         }
 
         >:where(:nth-child(2)) {
-                @apply w-full md:w-[calc(var(--few))];
+                width: 100%;
+                @media (min-width: 768px) {
+                	width: calc(var(--few));
+                }
         }
 
         &.bp-sm > :where(:nth-child(1)) {
-                @apply sm:w-[calc(100%-var(--few)-var(--gap))];
+                @media (min-width: 640px) {
+                	width: calc(100% - var(--few) - var(--gap));
+                }
         }
         &.bp-sm > :where(:nth-child(2)) {
-                @apply sm:w-[calc(var(--few))];
+                @media (min-width: 640px) {
+                	width: calc(var(--few));
+                }
         }
 }
 
@@ -482,18 +668,28 @@
         --few: 20%;
 
         >:where(:nth-child(1)) {
-                @apply w-full md:w-[calc(var(--few))];
+                width: 100%;
+                @media (min-width: 768px) {
+                	width: calc(var(--few));
+                }
         }
 
         >:where(:nth-child(2)) {
-                @apply w-full md:w-[calc(100%-var(--few)-var(--gap))];
+                width: 100%;
+                @media (min-width: 768px) {
+                	width: calc(100% - var(--few) - var(--gap));
+                }
         }
 
         &.bp-sm > :where(:nth-child(1)) {
-                @apply sm:w-[calc(var(--few))];
+                @media (min-width: 640px) {
+                	width: calc(var(--few));
+                }
         }
         &.bp-sm > :where(:nth-child(2)) {
-                @apply sm:w-[calc(100%-var(--few)-var(--gap))];
+                @media (min-width: 640px) {
+                	width: calc(100% - var(--few) - var(--gap));
+                }
         }
 }
 
@@ -502,54 +698,140 @@
         --few: 20%;
 
         >:where(:nth-child(1)) {
-                @apply w-full md:w-[calc(100%-var(--few)-var(--gap))];
+                width: 100%;
+                @media (min-width: 768px) {
+                	width: calc(100% - var(--few) - var(--gap));
+                }
         }
 
         >:where(:nth-child(2)) {
-                @apply w-full md:w-[calc(var(--few))];
+                width: 100%;
+                @media (min-width: 768px) {
+                	width: calc(var(--few));
+                }
         }
 
         &.bp-sm > :where(:nth-child(1)) {
-                @apply sm:w-[calc(100%-var(--few)-var(--gap))];
+                @media (min-width: 640px) {
+                	width: calc(100% - var(--few) - var(--gap));
+                }
         }
         &.bp-sm > :where(:nth-child(2)) {
-                @apply sm:w-[calc(var(--few))];
+                @media (min-width: 640px) {
+                	width: calc(var(--few));
+                }
         }
 }
 
 :where(.Flex55, .Flex28, .Flex37, .Flex46, .Flex64, .Flex73, .Flex82) {
         // --gap
-        @apply flex flex-wrap gap-[--gap];
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--gap);
 
         img {
-                @apply w-full;
+                width: 100%;
         }
 
         // 旧 max-md (not .bp-sm): figure モバイル order -1, md 以上で復元
         &:not(.bp-sm) > figure {
-                @apply -order-1 md:[order:revert];
+                order: -1;
+                @media (min-width: 768px) {
+                	order: revert;
+                }
         }
         // 旧 max-sm (.bp-sm): figure モバイル order -1, sm 以上で復元
         &.bp-sm > figure {
-                @apply -order-1 sm:[order:revert];
+                order: -1;
+                @media (min-width: 640px) {
+                	order: revert;
+                }
         }
 }
 
 :where(.Wrap) {
         // --MY, --out
-        @apply py-[--MY] mx-[--out] max-w-none w-auto relative;
+        position: relative;
+        margin-left: var(--out);
+        margin-right: var(--out);
+        width: auto;
+        max-width: none;
+        padding-top: var(--MY);
+        padding-bottom: var(--MY);
 
         >* {
-                @apply mx-auto max-w-full;
+                margin-left: auto;
+                margin-right: auto;
+                max-width: 100%;
         }
 
         >*+* {
-                @apply mt-[--MY5];
+                margin-top: var(--MY5);
         }
 
         +.Wrap {
-                @apply mt-0;
+                margin-top: 0px;
         }
+}
+
+/* ScrollX（Next ページ / フロント横スクロール） */
+.ScrollX {
+        position: relative;
+        width: 100vw;
+        max-width: 100vw;
+        margin-left: var(--out);
+}
+
+.ScrollTrack {
+        position: sticky;
+        top: 0;
+        display: flex;
+        will-change: transform;
+
+        > * {
+                min-width: 100vw;
+                min-height: 100lvh;
+        }
+}
+
+.ScrollSpacer {
+        width: 100%;
+        pointer-events: none;
+}
+
+.mindMap {
+        align-content: center;
+        font-size: var(--mmFZ);
+        min-height: 100lvh;
+        font-family: var(--Jost);
+        position: relative;
+}
+
+.mindMap > * {
+        display: inline-block;
+        cursor: default;
+        transition: 0.4s;
+        line-height: 1;
+        margin: 0;
+}
+
+.mindWobble {
+        position: relative;
+        font-size: calc(var(--mmFZ) * 5.5);
+        font-family: var(--Jost);
+        z-index: 10;
+        line-height: 0.8em;
+        display: inline-block;
+        will-change: transform;
+        --mmWobbleAmp: 15;
+        --mmWobbleAmpX: 32;
+        --mmWobbleAmpY: 32;
+        --mmWobbleFreqX: 0.0005;
+        --mmWobbleFreqY: 0.0003;
+}
+
+.mmStatic {
+        transform: none !important;
 }
 
 // **********Stick*************--gap --few
@@ -572,99 +854,123 @@
 
 
         .StickItem {
-                @apply align-top text-center sticky top-0 ;
+                position: sticky;
+                top: 0px;
+                text-align: center;
+                vertical-align: top;
                 img {
-                        @apply w-full;
+                        width: 100%;
                 }
         }
 
         .StickScr {
-                @apply relative z-[1] mt-0 mr-0;
+                position: relative;
+                z-index: 1;
+                margin-top: 0px;
+                margin-right: 0px;
         }
 
         &.IsColumn {
-                @apply block;
+                display: block;
                 >* {
-                        @apply flex-initial w-full mx-auto;
+                        margin-left: auto;
+                        margin-right: auto;
+                        width: 100%;
+                        flex: 0 1 auto;
                 }
         }
 
         &.IsRev .StickScr {
-                @apply ml-0;
+                margin-left: 0px;
         }
 
         //  breakpoint 以上 : 重なり・並び替えをまとめて適用
         @media (min-width: 1280px) {
-                @apply flex  items-start [--Nshift:calc(var(--shift)*-1)];
+                display: flex;
+                align-items: flex-start;
+                --Nshift: calc(var(--shift) * -1);
                 .StickItem {
-                        @apply flex-1;
+                        flex: 1 1 0%;
                 }
                 .StickScr {
-                        @apply w-[--scr] ml-[--Nshift];
+                        margin-left: var(--Nshift);
+                        width: var(--scr);
                 }
                 &.IsRev .StickScr {
-                        @apply mr-[--Nshift];
+                        margin-right: var(--Nshift);
                 }
                 &.IsRev .StickItem {
-                        @apply order-1;
+                        order: 1;
                 }
         }
         &.bp-lg {
                 @media (min-width: 1024px) {
-                        @apply flex  items-start [--Nshift:calc(var(--shift)*-1)];
+                        display: flex;
+                        align-items: flex-start;
+                        --Nshift: calc(var(--shift) * -1);
 
                         .StickItem {
-                                @apply flex-1;
+                                flex: 1 1 0%;
                         }
                         .StickScr {
-                                @apply w-[--scr] ml-[--Nshift];
+                                margin-left: var(--Nshift);
+                                width: var(--scr);
                         }
                         &.IsRev .StickScr {
-                                @apply mr-[--Nshift];
+                                margin-right: var(--Nshift);
                         }
                         &.IsRev .StickItem {
-                                @apply order-1;
+                                order: 1;
                         }
                 }
         }
         &.bp-md {
                 @media (min-width: 768px) {
-                        @apply flex  items-start [--Nshift:calc(var(--shift)*-1)];
+                        display: flex;
+                        align-items: flex-start;
+                        --Nshift: calc(var(--shift) * -1);
                         .StickItem {
-                                @apply flex-1;
+                                flex: 1 1 0%;
                         }
                         .StickScr {
-                                @apply w-[--scr] ml-[--Nshift];
+                                margin-left: var(--Nshift);
+                                width: var(--scr);
                         }
                         &.IsRev .StickScr {
-                                @apply mr-[--Nshift];
+                                margin-right: var(--Nshift);
                         }
                         &.IsRev .StickItem {
-                                @apply order-1;
+                                order: 1;
                         }
                 }
         }
         &.bp-sm {
                 @media (min-width: 640px) {
-                        @apply flex  items-start [--Nshift:calc(var(--shift)*-1)];
+                        display: flex;
+                        align-items: flex-start;
+                        --Nshift: calc(var(--shift) * -1);
                         .StickItem {
-                                @apply flex-1;
+                                flex: 1 1 0%;
                         }
                         .StickScr {
-                                @apply w-[--scr] ml-[--Nshift];
+                                margin-left: var(--Nshift);
+                                width: var(--scr);
                         }
                         &.IsRev .StickScr {
-                                @apply mr-[--Nshift];
+                                margin-right: var(--Nshift);
                         }
                         &.IsRev .StickItem {
-                                @apply order-1;
+                                order: 1;
                         }
                 }
         }
         &.IsColumn {
-                @apply flex-col;
+                flex-direction: column;
                 >* {
-                        @apply flex-initial w-full mx-auto;
+                        margin-left: auto;
+                        margin-right: auto;
+                        width: 100%;
+                        flex: 0 1 auto;
                 }
         }
         
@@ -778,14 +1084,14 @@
         --PVM: 0.5;
         --stw: 1;
         --stc: var(--CC);
-        @apply min-h-[55vh];
+        min-height: 55vh;
 
         svg {
-                @apply block;
+                display: block;
         }
 
         path {
-                @apply fill-none;
+                fill: none;
                 stroke: var(--stc);
                 stroke-width: var(--stw);
                 stroke-linecap: round;
@@ -799,10 +1105,17 @@
         --PVM: 0.345;
         --stw: 1px;
         --stc: var(--CC);
-        @apply relative;
+        position: relative;
 
         >.BorderDrawSvg {
-                @apply block pointer-events-none overflow-visible absolute left-0 bottom-0 w-full h-[--stw];
+                pointer-events: none;
+                position: absolute;
+                left: 0px;
+                bottom: 0px;
+                display: block;
+                height: var(--stw);
+                width: 100%;
+                overflow: visible;
         }
 
         >.BorderDrawSvg path {
@@ -817,10 +1130,15 @@
         }
 
         &.IsDown>.BorderDrawSvg {
-                @apply absolute left-0 top-0 w-[--stw] h-full;
+                position: absolute;
+                left: 0px;
+                top: 0px;
+                height: 100%;
+                width: var(--stw);
 
                 &.Right {
-                        @apply left-auto right-0;
+                        left: auto;
+                        right: 0px;
                 }
         }
 
@@ -845,11 +1163,11 @@
         --ys: calc(var(--yl)*0.5);
 
         svg {
-                @apply block;
+                display: block;
         }
 
         path {
-                @apply fill-none;
+                fill: none;
                 stroke: var(--stc);
                 stroke-width: var(--stw);
                 stroke-linecap: round;
@@ -857,16 +1175,20 @@
         }
 
         .RgbShiftStack {
-                @apply grid isolate;
+                isolation: isolate;
+                display: grid;
         }
 
         .RgbShiftLayer {
-                @apply mix-blend-screen will-change-transform [grid-area:1/1];
+                mix-blend-mode: screen;
+                will-change: transform;
+                grid-area: 1/1;
                 animation-delay: var(--delay);
         }
 
         .RgbShiftR {
-                @apply pointer-events-none [transform:translate(var(--RgbShiftRX),var(--RgbShiftRY))];
+                pointer-events: none;
+                transform: translate(var(--RgbShiftRX),var(--RgbShiftRY));
                 --xl: calc(var(--shift)*-1);
                 --x0: 0px;
                 --xs: calc(var(--xl)*0.5);
@@ -886,11 +1208,13 @@
         }
 
         .RgbShiftG {
-                @apply pointer-events-none [transform:translate(0,0)];
+                pointer-events: none;
+                transform: translate(0,0);
         }
 
         .RgbShiftB {
-                @apply pointer-events-auto [transform:translate(var(--RgbShiftBX),var(--RgbShiftBY))];
+                pointer-events: auto;
+                transform: translate(var(--RgbShiftBX),var(--RgbShiftBY));
 
                 &:is(.IsBeat *) {
                         transform: unset;
@@ -947,10 +1271,14 @@
         --mosaique-size-factor: 0.02;
         // 全マスが消え始めるまでの時間幅。大きいほどゆっくり現れる。
         --mosaique-stagger: 800;
-        @apply relative isolate overflow-hidden;
+        position: relative;
+        isolation: isolate;
+        overflow: hidden;
 
         >.MaskMosaiqueCanvas {
-                @apply pointer-events-none absolute inset-0  ;
+                pointer-events: none;
+                position: absolute;
+                inset: 0px;
         }
 }
 
@@ -959,7 +1287,7 @@
         --canvasH: 100lvh;
 
         canvas {
-                @apply min-h-[--canvasH];
+                min-height: var(--canvasH);
         }
 
         &.IsDemo {
@@ -981,12 +1309,28 @@
         // モバイル (max-md 相当): --top/padding-bottom/内側の margin を狭く
         --top: calc(100vh - var(--head)*3);
         --step: 4em;
-        @apply md:[--top:calc(100vh-2.5em)];
+        @media (min-width: 768px) {
+        	--top: calc(100vh - 2.5em);
+        }
 
-        @apply w-fit max-w-full mx-auto flex items-start py-[1em] pb-[4em] ;
+        margin-left: auto;
+        margin-right: auto;
+        display: flex;
+        width: fit-content;
+        max-width: 100%;
+        align-items: flex-start;
+        padding-top: 1em;
+        padding-bottom: 4em;
 
         >* {
-                @apply sticky top-[--top] mx-[.125em] md:mx-[0.5em];
+                position: sticky;
+                top: var(--top);
+                margin-left: .125em;
+                margin-right: .125em;
+                @media (min-width: 768px) {
+                	margin-left: 0.5em;
+                	margin-right: 0.5em;
+                }
 
                 @for $i from 2 through 9 {
                         &:nth-child(#{$i}) {
@@ -1006,39 +1350,43 @@
 }
 
 :where(.RandomRects) {
-        @apply relative;
+        position: relative;
         .item {
-                @apply absolute [transform:translate(-50%,-50%)];
+                position: absolute;
+                transform: translate(-50%,-50%);
         }
 }
 
 .GeneratedShapes {
         >:not(g),
         >g>*:not(line){
-                @apply [transform-box:fill-box] origin-center;
+                transform-origin: center;
+                transform-box: fill-box;
                 rotate: var(--GSR);
         }
 }
 .MarkDown{//~/projects/0413portfolio/src/pages/Activity.tsx
         p{
-                @apply mb-[1em];
+                margin-bottom: 1em;
         }
         br{
-                @apply block;
+                display: block;
                 content: "";
         }
         ul{
-                @apply pl-[1em] py-4;
+                padding-top: 1rem;
+                padding-bottom: 1rem;
+                padding-left: 1em;
 
         }
         li{
-                @apply list-disc;
+                list-style-type: disc;
                 ::marker{
-                        @apply -mr-2;
+                        margin-right: -0.5rem;
                 }
         }
         pre{
-                @apply overflow-auto;
+                overflow: auto;
         }
 }
 
@@ -1059,37 +1407,53 @@ $val in $imgW {
 
 :where(.ImgText) {
         // --gap, --imgW
-        @apply flex flex-wrap gap-[--gap];
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--gap);
 
         // PCでのデフォルト画像幅
         --imgW: calc(50% - var(--gap)/2);
 
         figure {
-                @apply w-[var(--imgW,calc(50%-var(--gap)/2))] mx-auto;
+                margin-left: auto;
+                margin-right: auto;
+                width: var(--imgW,calc(50% - var(--gap) / 2));
 
                 >a,
                 img {
-                        @apply block w-full h-auto;
+                        display: block;
+                        height: auto;
+                        width: 100%;
                 }
         }
 
         >div {
-                @apply flex-1;
+                flex: 1 1 0%;
         }
 
         &.IsRev figure {
                 // --- 反転設定 ---
-                @apply order-1;
+                order: 1;
         }
 
         // 旧 max-md (not .bp-sm): モバイル figure order -1 / 100%、md 以上で復元
         &:not(.bp-sm) figure {
-                @apply -order-1 w-full md:[order:revert] md:w-[var(--imgW,calc(50%-var(--gap)/2))];
+                order: -1;
+                width: 100%;
+                @media (min-width: 768px) {
+                	width: var(--imgW,calc(50% - var(--gap) / 2));
+                	order: revert;
+                }
         }
 
         // 旧 max-sm (.bp-sm): モバイル figure order -1 / 100%、sm 以上で復元
         &.bp-sm figure {
-                @apply -order-1 w-full sm:[order:revert] sm:w-[var(--imgW,calc(50%-var(--gap)/2))];
+                order: -1;
+                width: 100%;
+                @media (min-width: 640px) {
+                	width: var(--imgW,calc(50% - var(--gap) / 2));
+                	order: revert;
+                }
         }
 }
 

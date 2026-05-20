@@ -18,14 +18,14 @@ while ( have_posts() ) :
 	the_post();
 	$page_id = get_the_ID();
 
-	$privacy_hero_kicker = (string) theme_page_meta( $page_id, 'privacy_hero_kicker', 'Privacy policy' );
-	$privacy_hero_lead   = (string) theme_page_meta(
+	$privacy_hero_kicker    = (string) theme_page_meta( $page_id, 'privacy_hero_kicker', 'Privacy policy' );
+	$privacy_hero_lead      = (string) theme_page_meta(
 		$page_id,
 		'privacy_hero_lead',
 		'左（広い画面ではサイド）のナビから章へジャンプできます。エディタ側で追加した見出しとは別に、この枠は静的ガイドとして残せます。'
 	);
-	$privacy_body_heading  = (string) theme_page_meta( $page_id, 'privacy_body_heading', '規約本文' );
-	$privacy_toc_title     = (string) theme_page_meta( $page_id, 'privacy_toc_title', '目次' );
+	$privacy_body_heading   = (string) theme_page_meta( $page_id, 'privacy_body_heading', '規約本文' );
+	$privacy_toc_title      = (string) theme_page_meta( $page_id, 'privacy_toc_title', '目次' );
 	$privacy_editor_heading = (string) theme_page_meta( $page_id, 'privacy_editor_heading', 'エディタからの追加ブロック' );
 
 	$privacy_sections = array(

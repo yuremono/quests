@@ -18,19 +18,19 @@ while ( have_posts() ) :
 	the_post();
 	$page_id = get_the_ID();
 
-	$careers_hero_kicker = (string) theme_page_meta( $page_id, 'careers_hero_kicker', 'Careers' );
-	$careers_hero_lead   = (string) theme_page_meta(
+	$careers_hero_kicker       = (string) theme_page_meta( $page_id, 'careers_hero_kicker', 'Careers' );
+	$careers_hero_lead         = (string) theme_page_meta(
 		$page_id,
 		'careers_hero_lead',
 		'働き方を左右するトーンを先に示し、詳細ページ本文は続きへ。左右のリストは一覧性を高めるデモ構成です。'
 	);
-	$careers_intro_heading = (string) theme_page_meta( $page_id, 'careers_intro_heading', '採用のハイライト' );
-	$careers_intro_body    = (string) theme_page_meta(
+	$careers_intro_heading     = (string) theme_page_meta( $page_id, 'careers_intro_heading', '採用のハイライト' );
+	$careers_intro_body        = (string) theme_page_meta(
 		$page_id,
 		'careers_intro_body',
 		'少数精鋭で案件に深く入り込むコースと、制作体制を支えるコースの両輪でチームが回っています。まずは下の共通前提を読みいただいたうえで、本文で募集職種の詳細を更新してください。'
 	);
-	$careers_col_left_heading = (string) theme_page_meta( $page_id, 'careers_col_left_heading', '共通の前提（例）' );
+	$careers_col_left_heading  = (string) theme_page_meta( $page_id, 'careers_col_left_heading', '共通の前提（例）' );
 	$careers_col_right_heading = (string) theme_page_meta( $page_id, 'careers_col_right_heading', '応募時のチェックリスト' );
 	$careers_roles_heading     = (string) theme_page_meta(
 		$page_id,
@@ -38,7 +38,7 @@ while ( have_posts() ) :
 		'募集職種・追加情報（本文編集領域）'
 	);
 
-	$left_items = array(
+	$left_items  = array(
 		(string) theme_page_meta( $page_id, 'careers_col_left_item_1', 'リモート＋出社のハイブリッド（チーム協議により調整）' ),
 		(string) theme_page_meta( $page_id, 'careers_col_left_item_2', '社会・健康保険、労働環境での安全衛生教育の実施' ),
 		(string) theme_page_meta( $page_id, 'careers_col_left_item_3', '学会・イベント参加への補助制度（デモ説明文案）' ),

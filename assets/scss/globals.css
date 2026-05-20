@@ -512,23 +512,6 @@ img, video {
      object-fit: cover;
 }
 
-main {
-  padding-inline: var(--PX);
-}
-
-:where(main > *) {
-  width: var(--wid);
-  max-width: 100%;
-  margin-inline: auto;
-  position: relative;
-}
-:where(main > *) + * {
-  margin-top: var(--MY);
-}
-:where(main > *):is(script, input[type=hidden]) {
-  margin-top: unset;
-}
-
 .into {
   padding-inline: var(--into);
 }
@@ -1435,16 +1418,37 @@ main {
   color: var(--AC);
 }
 .Header.Triangle {
-  @apply h-full pointer-events-none;
+  pointer-events: none;
+  height: 100%;
 }
 .Header.Triangle .HeaderInner {
-  @apply px-0 flex-col items-end justify-between h-full;
+  height: 100%;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding-left: 0px;
+  padding-right: 0px;
 }
 .Header.Triangle .HeaderInner > * {
   pointer-events: auto;
 }
 .Header.Triangle .HeaderLogo {
-  @apply absolute w-[var(--logoW)] top-1/2 left-0 translate-y-[-50%] pointer-events-auto h-auto;
+  pointer-events: auto;
+  position: absolute;
+  top: 50%;
+  left: 0px;
+  height: auto;
+  width: var(--logoW);
+  --tw-translate-y: -50%;
+  -webkit-transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+          transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
   background: url(/images/clip01.png) repeat center/20vw;
   -webkit-filter: grayscale(50%);
           filter: grayscale(50%);
@@ -1482,16 +1486,41 @@ main {
   color: var(--TR);
 }
 .Header.Triangle .HeaderMenu {
-  @apply top-2 right-2;
+  top: 0.5rem;
+  right: 0.5rem;
 }
 .Header.Triangle .HeaderNav {
-  @apply h-[--head];
+  height: var(--head);
 }
 .Header.Triangle .HeaderUl {
-  @apply flex flex-wrap items-center justify-center gap-1 p-2;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  gap: 0.25rem;
+  padding: 0.5rem;
 }
 .Header.Triangle .HeaderItems {
-  @apply flex flex-col items-end text-right p-2 gap-0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  gap: 0px;
+  padding: 0.5rem;
+  text-align: right;
 }
 @media (max-width: 960px) {
   .Header.Triangle .HeaderItems {
@@ -1501,10 +1530,11 @@ main {
   }
 }
 .Header.Triangle .HeaderItems > a {
-  @apply px-[--headG];
+  padding-left: var(--headG);
+  padding-right: var(--headG);
 }
 .Header.Triangle .DropIcon {
-  @apply ml-1;
+  margin-left: 0.25rem;
 }
 .Header.Triangle .NavInner ul a {
   display: block;
@@ -1530,22 +1560,48 @@ main {
   color: var(--AC);
 }
 .Header.NavCircleLeft {
-  @apply h-full pointer-events-none;
+  pointer-events: none;
+  height: 100%;
 }
 .Header.NavCircleLeft .HeaderInner {
-  @apply px-0 flex-col items-end justify-between h-full;
+  height: 100%;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding-left: 0px;
+  padding-right: 0px;
 }
 .Header.NavCircleLeft .HeaderInner > * {
   pointer-events: auto;
 }
 .Header.NavCircleLeft .HeaderNav {
-  @apply absolute top-1/2 left-0 translate-y-[-50%] pointer-events-auto z-[100] w-[--logoW] aspect-[1/2];
+  pointer-events: auto;
+  position: absolute;
+  top: 50%;
+  left: 0px;
+  z-index: 100;
+  aspect-ratio: 1/2;
+  width: var(--logoW);
+  --tw-translate-y: -50%;
+  -webkit-transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+          transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 .Header.NavCircleLeft .HeaderNav ul {
-  @apply grid;
+  display: grid;
 }
 .Header.NavCircleLeft .HeaderNav li {
-  @apply py-0 content-center h-[unset];
+  height: unset;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  padding-top: 0px;
+  padding-bottom: 0px;
   background: -webkit-gradient(linear, left top, left bottom, from(var(--TC)), to(var(--TC))) no-repeat center/100% 1px;
   background: linear-gradient(var(--TC), var(--TC)) no-repeat center/100% 1px;
   background-color: var(--GR10);
@@ -1608,7 +1664,16 @@ main {
           transform: translateX(100%);
 }
 .Header.NavCircleLeft .HeaderLogo {
-  @apply absolute w-[var(--logoW)] top-1/2 left-0 translate-y-[-50%] pointer-events-auto h-auto z-[1000];
+  pointer-events: auto;
+  position: absolute;
+  top: 50%;
+  left: 0px;
+  z-index: 1000;
+  height: auto;
+  width: var(--logoW);
+  --tw-translate-y: -50%;
+  -webkit-transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+          transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
   border-radius: 0 999px 999px 0;
   overflow: hidden;
   border-left: 0;
@@ -1659,10 +1724,23 @@ main {
   border-radius: inherit;
 }
 .Header.NavCircleLeft .HeaderMenu {
-  @apply top-2 right-2;
+  top: 0.5rem;
+  right: 0.5rem;
 }
 .Header.NavCircleLeft .HeaderItems {
-  @apply flex flex-col items-end text-right p-2 gap-0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  gap: 0px;
+  padding: 0.5rem;
+  text-align: right;
 }
 @media (max-width: 960px) {
   .Header.NavCircleLeft .HeaderItems {
@@ -1672,10 +1750,11 @@ main {
   }
 }
 .Header.NavCircleLeft .HeaderItems > a {
-  @apply px-[--headG];
+  padding-left: var(--headG);
+  padding-right: var(--headG);
 }
 .Header.NavCircleLeft .DropIcon {
-  @apply ml-1;
+  margin-left: 0.25rem;
 }
 .Header.NavCircleLeft .NavInner ul a {
   display: block;
@@ -1686,16 +1765,48 @@ main {
 }
 .Header.HeaderCylinder {
   --logoW:8rem;
-  @apply h-full pointer-events-none;
+  pointer-events: none;
+  height: 100%;
 }
 .Header.HeaderCylinder .HeaderInner {
-  @apply px-0 flex-col items-end justify-between h-full;
+  height: 100%;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding-left: 0px;
+  padding-right: 0px;
 }
 .Header.HeaderCylinder .HeaderInner > * {
   pointer-events: auto;
 }
 .Header.HeaderCylinder .HeaderCylinderLogo {
-  @apply z-[1000] absolute w-[calc(var(--logoW)/3*2)] lg:w-[var(--logoW)] top-0 left-0 pointer-events-auto h-auto p-0 border-0 lg:top-1/2 lg:translate-y-[-52.5%];
+  pointer-events: auto;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  z-index: 1000;
+  height: auto;
+  width: calc(var(--logoW) / 3 * 2);
+  border-width: 0px;
+  padding: 0px;
+}
+@media (min-width: 1024px) {
+  .Header.HeaderCylinder .HeaderCylinderLogo {
+    top: 50%;
+    width: var(--logoW);
+    --tw-translate-y: -52.5%;
+    -webkit-transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+            transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+  }
+}
+.Header.HeaderCylinder .HeaderCylinderLogo {
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
@@ -1704,20 +1815,51 @@ main {
   cursor: pointer;
 }
 .Header.HeaderCylinder .HeaderCylinderLogo .LogoCylinder {
-  @apply w-[calc(var(--logoW)/3*2)] lg:w-[var(--logoW)];
+  width: calc(var(--logoW) / 3 * 2);
+}
+@media (min-width: 1024px) {
+  .Header.HeaderCylinder .HeaderCylinderLogo .LogoCylinder {
+    width: var(--logoW);
+  }
+}
+.Header.HeaderCylinder .HeaderCylinderLogo .LogoCylinder {
   aspect-ratio: 1;
   display: block;
 }
 .Header.HeaderCylinder .HeaderCylinderLogo .LogoLoading {
-  @apply w-[calc(var(--logoW)/3*2)] lg:w-[var(--logoW)];
+  width: calc(var(--logoW) / 3 * 2);
+}
+@media (min-width: 1024px) {
+  .Header.HeaderCylinder .HeaderCylinderLogo .LogoLoading {
+    width: var(--logoW);
+  }
+}
+.Header.HeaderCylinder .HeaderCylinderLogo .LogoLoading {
   border-radius: inherit;
 }
 .Header.HeaderCylinder .HeaderAnotation {
   --annoteInterval: 1.5s;
-  @apply absolute left-[0] top-0 text-xs py-2 lg:p-4 w-full bottom-0 lg:top-[auto] grid font-medium whitespace-nowrap tracking-[-0em];
+  position: absolute;
+  left: 0;
+  top: 0px;
+  bottom: 0px;
+  display: grid;
+  width: 100%;
+  white-space: nowrap;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0em;
+}
+@media (min-width: 1024px) {
+  .Header.HeaderCylinder .HeaderAnotation {
+    top: auto;
+    padding: 1rem;
+  }
 }
 .Header.HeaderCylinder .HeaderAnotation > span {
-  @apply [grid-area:1/1];
+  grid-area: 1/1;
   -webkit-animation: header_anotation_toggle calc(var(--annoteInterval) * 2) linear infinite;
           animation: header_anotation_toggle calc(var(--annoteInterval) * 2) linear infinite;
 }
@@ -1726,7 +1868,29 @@ main {
           animation-delay: calc(var(--annoteInterval) * -1);
 }
 .Header.HeaderCylinder .HeaderNav {
-  @apply absolute top-1/2 left-0 translate-y-[-52.5%] z-[100] w-full py-4 lg:py-0 lg:w-[--logoW] justify-start px-0 pointer-events-none;
+  pointer-events: none;
+  position: absolute;
+  top: 50%;
+  left: 0px;
+  z-index: 100;
+  width: 100%;
+  --tw-translate-y: -52.5%;
+  -webkit-transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+          transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  padding-left: 0px;
+  padding-right: 0px;
+}
+@media (min-width: 1024px) {
+  .Header.HeaderCylinder .HeaderNav {
+    width: var(--logoW);
+    padding-top: 0px;
+    padding-bottom: 0px;
+  }
 }
 @media (max-width: 960px) {
   .Header.HeaderCylinder .HeaderNav {
@@ -1734,7 +1898,17 @@ main {
   }
 }
 .Header.HeaderCylinder .HeaderNav .NavUl {
-  @apply grid justify-start lg:justify-end;
+  display: grid;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+@media (min-width: 1024px) {
+  .Header.HeaderCylinder .HeaderNav .NavUl {
+    -webkit-box-pack: end;
+        -ms-flex-pack: end;
+            justify-content: flex-end;
+  }
 }
 .Header.HeaderCylinder .HeaderNav .NavLi {
   --navX: 1;
@@ -1746,7 +1920,24 @@ main {
   }
 }
 .Header.HeaderCylinder .HeaderNav .NavLi {
-  @apply text-lg lg:text-base px-2 py-0 my-[1.5lvh] block content-center h-[unset];
+  margin-top: 1.5lvh;
+  margin-bottom: 1.5lvh;
+  display: block;
+  height: unset;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  font-size: 1.125rem;
+}
+@media (min-width: 1024px) {
+  .Header.HeaderCylinder .HeaderNav .NavLi {
+    font-size: 1rem;
+  }
+}
+.Header.HeaderCylinder .HeaderNav .NavLi {
   background-color: var(--foreground);
   color: var(--background);
   -webkit-transform: translate(0, var(--navClosedY));
@@ -1759,7 +1950,8 @@ main {
   width: fit-content;
 }
 .Header.HeaderCylinder .HeaderNav a, .Header.HeaderCylinder .HeaderNav button {
-  @apply align-top whitespace-nowrap;
+  white-space: nowrap;
+  vertical-align: top;
 }
 .Header.HeaderCylinder .HeaderNav ul:has(li:nth-of-type(6):last-of-type) li:nth-of-type(1) {
   --navX: 0.44;
@@ -2011,7 +2203,13 @@ main {
           transform: translateY(0.25rem);
 }
 .Header.HeaderCylinder[data-nav-open=true] .HeaderNav {
-  @apply bg-BC lg:bg-[--TR];
+  --tw-bg-opacity: 1;
+  background-color: color-mix(in srgb, transparent, var(--BC) calc(var(--tw-bg-opacity, 1) * 100%));
+}
+@media (min-width: 1024px) {
+  .Header.HeaderCylinder[data-nav-open=true] .HeaderNav {
+    background-color: var(--TR);
+  }
 }
 .Header.HeaderCylinder[data-nav-open=true] .HeaderNav .NavLi {
   opacity: 1;
@@ -2057,27 +2255,56 @@ main {
   color: var(--AC);
 }
 .Header.NavCircleTop {
-  @apply h-full pointer-events-none;
+  pointer-events: none;
+  height: 100%;
   font-size: 1.25rem;
 }
 .Header.NavCircleTop .HeaderInner {
-  @apply px-0 flex-col items-end justify-between h-full;
+  height: 100%;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding-left: 0px;
+  padding-right: 0px;
 }
 .Header.NavCircleTop .HeaderInner > * {
   pointer-events: auto;
 }
 .Header.NavCircleTop .HeaderNav {
-  @apply absolute top-0 left-1/2 translate-x-[-50%] pointer-events-auto z-[100] h-[unset];
+  pointer-events: auto;
+  position: absolute;
+  top: 0px;
+  left: 50%;
+  z-index: 100;
+  height: unset;
+  --tw-translate-x: -50%;
+  -webkit-transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+          transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
   --listH: 2.5em;
   --listN: 3;
 }
 .Header.NavCircleTop .HeaderNav ul {
-  @apply block bg-MC/90 aspect-[2/1];
+  display: block;
+  aspect-ratio: 2/1;
+  background-color: color-mix(in srgb, transparent, var(--MC) 90%);
   border-radius: 0 0 999px 999px;
   height: calc(var(--listH) * var(--listN));
 }
 .Header.NavCircleTop .HeaderNav li {
-  @apply p-0 h-auto min-h-[--listH] content-center w-auto text-center;
+  height: auto;
+  min-height: var(--listH);
+  width: auto;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  padding: 0px;
+  text-align: center;
   background: -webkit-gradient(linear, left top, left bottom, from(var(--TC)), to(var(--TC))) no-repeat center/1px 100%, -webkit-gradient(linear, left top, left bottom, from(var(--TC)), to(var(--TC))) no-repeat center/100% 1px;
   background: linear-gradient(var(--TC), var(--TC)) no-repeat center/1px 100%, linear-gradient(var(--TC), var(--TC)) no-repeat center/100% 1px;
   background-color: var(--GR10);
@@ -2151,7 +2378,15 @@ main {
           transform: translateY(20%);
 }
 .Header.NavCircleTop .HeaderLogo {
-  @apply absolute w-[var(--logoW)] top-1/2 left-0 translate-y-[-50%] pointer-events-auto h-auto;
+  pointer-events: auto;
+  position: absolute;
+  top: 50%;
+  left: 0px;
+  height: auto;
+  width: var(--logoW);
+  --tw-translate-y: -50%;
+  -webkit-transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+          transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
   background: url(/images/clip01.png) repeat center/20vw;
   -webkit-filter: grayscale(50%);
           filter: grayscale(50%);
@@ -2190,10 +2425,23 @@ main {
   color: var(--TR);
 }
 .Header.NavCircleTop .HeaderMenu {
-  @apply top-2 right-2;
+  top: 0.5rem;
+  right: 0.5rem;
 }
 .Header.NavCircleTop .HeaderItems {
-  @apply flex flex-col items-end text-right p-2 gap-0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  gap: 0px;
+  padding: 0.5rem;
+  text-align: right;
 }
 @media (max-width: 960px) {
   .Header.NavCircleTop .HeaderItems {
@@ -2203,10 +2451,11 @@ main {
   }
 }
 .Header.NavCircleTop .HeaderItems > a {
-  @apply px-[--headG];
+  padding-left: var(--headG);
+  padding-right: var(--headG);
 }
 .Header.NavCircleTop .DropIcon {
-  @apply ml-1;
+  margin-left: 0.25rem;
 }
 .Header.NavCircleTop .NavInner ul a {
   display: block;
@@ -3257,7 +3506,8 @@ main {
   transition: var(--trans);
 }
 :where(.HeaderNavMobile) .DropLi svg {
-  @apply shrink-0;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
 }
 :where(.HeaderNavMobile) .DropLi:is(ul.show > *) {
   grid-template-rows: 1fr;
@@ -4044,84 +4294,149 @@ p:has(> a) .__anchor {
 }
 
 :where(.Hero) {
-  @apply grid;
+  display: grid;
 }
 :where(.Hero) > * {
-  @apply z-[1] [grid-area:1/1];
+  z-index: 1;
+  grid-area: 1/1;
 }
 :where(.Hero) :where(.back) {
-  @apply w-full;
+  width: 100%;
 }
 :where(.Hero) :where(.back) > img {
-  @apply w-full object-cover aspect-square md:aspect-auto;
+  aspect-ratio: 1/1;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+@media (min-width: 768px) {
+  :where(.Hero) :where(.back) > img {
+    aspect-ratio: auto;
+  }
 }
 :where(.Hero) .item {
-  @apply mt-0 content-center py-[--PX] px-[--into];
+  margin-top: 0px;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  padding-top: var(--PX);
+  padding-bottom: var(--PX);
+  padding-left: var(--into);
+  padding-right: var(--into);
 }
 
 :where(.WaveHover) {
-  @apply relative isolate;
+  position: relative;
+  isolation: isolate;
 }
 :where(.WaveHover) > .WaveHoverCanvas {
-  @apply pointer-events-none fixed left-0 top-[--head] z-[3] block bg-transparent opacity-0 transition-opacity duration-200;
+  pointer-events: none;
+  position: fixed;
+  left: 0px;
+  top: var(--head);
+  z-index: 3;
+  display: block;
+  background-color: transparent;
+  opacity: 0;
+  -webkit-transition-property: opacity;
+  transition-property: opacity;
+  -webkit-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+          transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  -webkit-transition-duration: 200ms;
+          transition-duration: 200ms;
 }
 :where(.WaveHover):has(a:hover) > .WaveHoverCanvas {
-  @apply opacity-100;
+  opacity: 1;
 }
 
 :where(.Cards) {
-  @apply flex flex-wrap gap-[--gap];
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  gap: var(--gap);
 }
 :where(.Cards) .item {
-  @apply w-[--itemW] mt-0;
+  margin-top: 0px;
+  width: var(--itemW);
 }
 :where(.Cards) .item img {
-  @apply w-full;
+  width: 100%;
 }
 :where(.Cards).IsLayer .item {
-  @apply grid;
+  display: grid;
 }
 :where(.Cards).IsLayer .item > * {
-  @apply z-[1] [grid-area:1/1];
+  z-index: 1;
+  grid-area: 1/1;
 }
 :where(.Cards).IsLayer .item figure {
-  @apply w-full h-full m-0;
+  margin: 0px;
+  height: 100%;
+  width: 100%;
 }
 :where(.Cards).IsLayer .item figure img {
-  @apply h-full object-cover;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 :where(.Cards).IsGrow .item {
-  @apply flex-1 w-auto;
+  width: auto;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 0%;
+          flex: 1 1 0%;
 }
 :where(.Cards).IsFix {
   --itemW: 240px;
-  @apply justify-center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 :where(.Cards).IsFix .item {
-  @apply w-[--itemW];
+  width: var(--itemW);
 }
 :where(.Cards).IsIcon {
   --iconW: 5em;
-  @apply md:[--iconW:7.5em];
+}
+@media (min-width: 768px) {
+  :where(.Cards).IsIcon {
+    --iconW: 7.5em;
+  }
 }
 :where(.Cards).IsIcon figure {
-  @apply min-h-[--iconW] content-center;
+  min-height: var(--iconW);
+  -ms-flex-line-pack: center;
+      align-content: center;
 }
 :where(.Cards).IsIcon svg,
 :where(.Cards).IsIcon img {
-  @apply max-w-[--iconW] mx-auto;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: var(--iconW);
 }
 :where(.Cards).IsRow .item {
-  @apply flex-row;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
 }
 :where(.Cards).IsRow .item > div {
-  @apply flex-1;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 0%;
+          flex: 1 1 0%;
 }
 :where(.Cards).IsRow figure {
-  @apply w-[--imgW];
+  width: var(--imgW);
 }
 :where(.Cards).IsRow .box {
-  @apply basis-full md:basis-auto;
+  -ms-flex-preferred-size: 100%;
+      flex-basis: 100%;
+}
+@media (min-width: 768px) {
+  :where(.Cards).IsRow .box {
+    -ms-flex-preferred-size: auto;
+        flex-basis: auto;
+  }
 }
 :where(.Cards).IsShift {
   --shift: var(--MY5);
@@ -4129,11 +4444,13 @@ p:has(> a) .__anchor {
   --Nshift: calc(var(--shift)*-1);
   --Nshift2: calc(var(--shift)*-2);
 }
-:where(.Cards).IsShift .item:nth-child(even) {
-  @apply md:[margin-block:var(--shift)_var(--Nshift)];
+@media (min-width: 768px) {
+  :where(.Cards).IsShift .item:nth-child(even) {
+    margin-block: var(--shift) var(--Nshift);
+  }
 }
 :where(.Cards).IsShift .item:last-child {
-  @apply mb-0;
+  margin-bottom: 0px;
 }
 :where(.Cards).col1 {
   --itemW: calc((100% - (var(--gap) * 0)) / 1);
@@ -4196,86 +4513,187 @@ p:has(> a) .__anchor {
   --trans: 400ms ;
 }
 :where(.Toggle)::details-content {
-  @apply h-0 overflow-hidden [transition:var(--trans)_allow-discrete];
+  height: 0px;
+  overflow: hidden;
+  -webkit-transition: var(--trans) allow-discrete;
+  transition: var(--trans) allow-discrete;
 }
 :where(.Toggle)[open]::details-content {
-  @apply h-auto;
+  height: auto;
 }
 :where(.Toggle) summary {
-  @apply list-none outline-none cursor-pointer relative bg-[--qBG] p-[1em] pr-[2.5em] transition-all duration-[.4s];
+  position: relative;
+  cursor: pointer;
+  list-style-type: none;
+  background-color: var(--qBG);
+  padding: 1em;
+  padding-right: 2.5em;
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+  -webkit-transition-property: all;
+  transition-property: all;
+  -webkit-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+          transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  -webkit-transition-duration: 150ms;
+          transition-duration: 150ms;
+  -webkit-transition-duration: 0.4s;
+          transition-duration: 0.4s;
 }
 :where(.Toggle) summary:hover {
-  @apply opacity-80;
+  opacity: 0.8;
 }
 :where(.Toggle) summary::-webkit-details-marker {
-  @apply hidden;
+  display: none;
 }
 :where(.Toggle) summary .ToggleIcon {
-  @apply text-[1.5em] absolute right-[1em] top-1/2 [translate:0_-50%] transition-all duration-[.4s];
+  position: absolute;
+  right: 1em;
+  top: 50%;
+  font-size: 1.5em;
+  -webkit-transition-property: all;
+  transition-property: all;
+  -webkit-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+          transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  -webkit-transition-duration: 150ms;
+          transition-duration: 150ms;
+  -webkit-transition-duration: 0.4s;
+          transition-duration: 0.4s;
+  translate: 0 -50%;
 }
 :where(.Toggle)[open] summary .ToggleIcon {
-  @apply [scale:1_-1];
+  scale: 1 -1;
 }
 :where(.Toggle) > div {
-  @apply relative p-[1em] bg-[--aBG];
+  position: relative;
+  background-color: var(--aBG);
+  padding: 1em;
 }
 :where(.Toggle) .has_img {
-  @apply flex flex-row items-center flex-wrap gap-[1em] w-full;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 1em;
 }
 :where(.Toggle) .has_img figure {
-  @apply max-w-full order-1 w-[var(--imgW,30%)] ml-auto;
+  -webkit-box-ordinal-group: 2;
+      -ms-flex-order: 1;
+          order: 1;
+  margin-left: auto;
+  width: var(--imgW, 30%);
+  max-width: 100%;
 }
 :where(.Toggle) .has_img figure img {
-  @apply w-full h-auto block;
+  display: block;
+  height: auto;
+  width: 100%;
 }
 :where(.Toggle) .has_img > div {
-  @apply flex-1;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 0%;
+          flex: 1 1 0%;
 }
 :where(.Toggle) .has_img:not(.bp-sm) figure {
-  @apply w-full ml-0 md:w-[var(--imgW,30%)] md:ml-auto;
+  margin-left: 0px;
+  width: 100%;
+}
+@media (min-width: 768px) {
+  :where(.Toggle) .has_img:not(.bp-sm) figure {
+    margin-left: auto;
+    width: var(--imgW, 30%);
+  }
 }
 :where(.Toggle) .has_img.bp-sm figure {
-  @apply w-full ml-0 sm:w-[var(--imgW,30%)] sm:ml-auto;
+  margin-left: 0px;
+  width: 100%;
+}
+@media (min-width: 640px) {
+  :where(.Toggle) .has_img.bp-sm figure {
+    margin-left: auto;
+    width: var(--imgW, 30%);
+  }
 }
 :where(.Toggle).IsQa summary,
 :where(.Toggle).IsQa > div {
-  @apply pl-[4em];
+  padding-left: 4em;
 }
 :where(.Toggle).IsQa summary:before,
 :where(.Toggle).IsQa > div:before {
   content: "";
-  @apply font-[family-name:var(--bfFF)] text-[--bfC] bg-[--bfBG] block absolute left-[1em] top-1/2 -translate-y-1/2 rounded-[--bfRad] w-[2em] aspect-square content-center text-center;
+  position: absolute;
+  left: 1em;
+  top: 50%;
+  display: block;
+  aspect-ratio: 1/1;
+  width: 2em;
+  --tw-translate-y: -50%;
+  -webkit-transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+          transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+  -ms-flex-line-pack: center;
+      align-content: center;
+  border-radius: var(--bfRad);
+  background-color: var(--bfBG);
+  text-align: center;
+  font-family: var(--bfFF);
+  color: var(--bfC);
 }
 :where(.Toggle).IsQa summary:before {
   content: "Q";
 }
 :where(.Toggle).IsQa > div:before {
   content: "A";
-  @apply bg-[--abfBG];
+  background-color: var(--abfBG);
 }
 :where(.Toggle).IsSmall {
-  @apply w-fit;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
 }
 :where(.Toggle).IsSmall summary {
-  @apply text-[--gr] text-[1.2em] inline-block pl-0 pr-[1em] py-0;
+  display: inline-block;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 0px;
+  padding-right: 1em;
+  font-size: 1.2em;
+  color: var(--gr);
 }
 :where(.Toggle).IsSmall summary:after {
   content: "+";
-  @apply font-[family-name:var(--icon,inherit)] text-[#888] inline-block [transform-origin:100%_50%] text-[color:inherit] absolute right-0;
+  position: absolute;
+  right: 0px;
+  display: inline-block;
+  font-family: var(--icon, inherit);
+  --tw-text-opacity: 1;
+  color: rgb(136, 136, 136, var(--tw-text-opacity, 1));
+  color: inherit;
+  -webkit-transform-origin: 100% 50%;
+          transform-origin: 100% 50%;
 }
 :where(.Toggle).IsSmall[open] summary:after {
   content: "-";
-  @apply [scale:1.5_1];
+  scale: 1.5 1;
 }
 :where(.Toggle).IsSmall > div {
-  @apply p-0 relative text-[0.875em];
+  position: relative;
+  padding: 0px;
+  font-size: 0.875em;
 }
 :where(.Toggle).IsSmall summary:hover {
-  @apply text-[--AC];
+  color: var(--AC);
 }
 
 :where(.Panel) {
-  @apply relative;
+  position: relative;
   --MY: 0em;
   --bg: var(--UN);
   --beforeFZ: 75%;
@@ -4285,28 +4703,61 @@ p:has(> a) .__anchor {
   --imgW: 30%;
 }
 :where(.Panel) .item {
-  @apply bg-[--bg] w-full flex flex-wrap rounded-[--rad] p-[--PX] gap-[--gap] relative [counter-increment:cnt];
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  gap: var(--gap);
+  border-radius: var(--rad);
+  background-color: var(--bg);
+  padding: var(--PX);
+  counter-increment: cnt;
 }
 :where(.Panel) .item + .item {
-  @apply mt-[--MY];
+  margin-top: var(--MY);
 }
 :where(.Panel) .item figure {
-  @apply w-[var(--imgW,30%)];
+  width: var(--imgW, 30%);
 }
 :where(.Panel) .item figure:where(.Panel .IsRev *) {
-  @apply order-1;
+  -webkit-box-ordinal-group: 2;
+      -ms-flex-order: 1;
+          order: 1;
 }
 :where(.Panel) .item figure img {
-  @apply w-full h-auto block;
+  display: block;
+  height: auto;
+  width: 100%;
 }
 :where(.Panel) .item > div {
-  @apply flex-1;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 0%;
+          flex: 1 1 0%;
 }
 :where(.Panel) .item:not(.bp-sm) figure {
-  @apply w-full md:w-[var(--imgW,30%)];
+  width: 100%;
+}
+@media (min-width: 768px) {
+  :where(.Panel) .item:not(.bp-sm) figure {
+    width: var(--imgW, 30%);
+  }
 }
 :where(.Panel) .item.bp-sm figure {
-  @apply w-full -order-1 sm:w-[var(--imgW,30%)] sm:[order:revert];
+  -webkit-box-ordinal-group: 0;
+      -ms-flex-order: -1;
+          order: -1;
+  width: 100%;
+}
+@media (min-width: 640px) {
+  :where(.Panel) .item.bp-sm figure {
+    width: var(--imgW, 30%);
+    -webkit-box-ordinal-group: revert;
+        -ms-flex-order: revert;
+            order: revert;
+  }
 }
 :where(.Panel).img20 {
   --imgW: 20%;
@@ -4322,139 +4773,278 @@ p:has(> a) .__anchor {
 }
 :where(.Panel).IsFlow .item:after {
   content: "";
-  @apply block absolute left-1/2 w-[--afterW] aspect-square bg-[--afterBG] [top:calc(100%+calc(var(--MY)/2))] [transform:translate(-50%,-50%)] [clip-path:polygon(0_15%,50%_100%,100%_15%)];
+  position: absolute;
+  left: 50%;
+  display: block;
+  aspect-ratio: 1/1;
+  width: var(--afterW);
+  background-color: var(--afterBG);
+  clip-path: polygon(0 15%, 50% 100%, 100% 15%);
+  top: calc(100% + var(--MY) / 2);
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
 }
 :where(.Panel).IsFlow .item:last-of-type:after {
-  @apply hidden;
+  display: none;
 }
 
 :where(.Flex55) > * {
-  @apply w-full md:w-[calc(50%-var(--gap)/2)];
+  width: 100%;
+}
+@media (min-width: 768px) {
+  :where(.Flex55) > * {
+    width: calc(50% - var(--gap) / 2);
+  }
 }
 :where(.Flex55).bp-sm > * {
-  @apply w-full sm:w-[calc(50%-var(--gap)/2)] md:w-[calc(50%-var(--gap)/2)];
+  width: 100%;
+}
+@media (min-width: 640px) {
+  :where(.Flex55).bp-sm > * {
+    width: calc(50% - var(--gap) / 2);
+  }
+}
+@media (min-width: 768px) {
+  :where(.Flex55).bp-sm > * {
+    width: calc(50% - var(--gap) / 2);
+  }
 }
 
 :where(.Flex46) {
   --few: 40%;
 }
 :where(.Flex46) > :where(:nth-child(1)) {
-  @apply w-full md:w-[calc(var(--few))];
+  width: 100%;
+}
+@media (min-width: 768px) {
+  :where(.Flex46) > :where(:nth-child(1)) {
+    width: calc(var(--few));
+  }
 }
 :where(.Flex46) > :where(:nth-child(2)) {
-  @apply w-full md:w-[calc(100%-var(--few)-var(--gap))];
+  width: 100%;
 }
-:where(.Flex46).bp-sm > :where(:nth-child(1)) {
-  @apply sm:w-[calc(var(--few))];
+@media (min-width: 768px) {
+  :where(.Flex46) > :where(:nth-child(2)) {
+    width: calc(100% - var(--few) - var(--gap));
+  }
 }
-:where(.Flex46).bp-sm > :where(:nth-child(2)) {
-  @apply sm:w-[calc(100%-var(--few)-var(--gap))];
+@media (min-width: 640px) {
+  :where(.Flex46).bp-sm > :where(:nth-child(1)) {
+    width: calc(var(--few));
+  }
+}
+@media (min-width: 640px) {
+  :where(.Flex46).bp-sm > :where(:nth-child(2)) {
+    width: calc(100% - var(--few) - var(--gap));
+  }
 }
 
 :where(.Flex64) {
   --few: 40%;
 }
 :where(.Flex64) > :where(:nth-child(1)) {
-  @apply w-full md:w-[calc(100%-var(--few)-var(--gap))];
+  width: 100%;
+}
+@media (min-width: 768px) {
+  :where(.Flex64) > :where(:nth-child(1)) {
+    width: calc(100% - var(--few) - var(--gap));
+  }
 }
 :where(.Flex64) > :where(:nth-child(2)) {
-  @apply w-full md:w-[calc(var(--few))];
+  width: 100%;
 }
-:where(.Flex64).bp-sm > :where(:nth-child(1)) {
-  @apply sm:w-[calc(100%-var(--few)-var(--gap))];
+@media (min-width: 768px) {
+  :where(.Flex64) > :where(:nth-child(2)) {
+    width: calc(var(--few));
+  }
 }
-:where(.Flex64).bp-sm > :where(:nth-child(2)) {
-  @apply sm:w-[calc(var(--few))];
+@media (min-width: 640px) {
+  :where(.Flex64).bp-sm > :where(:nth-child(1)) {
+    width: calc(100% - var(--few) - var(--gap));
+  }
+}
+@media (min-width: 640px) {
+  :where(.Flex64).bp-sm > :where(:nth-child(2)) {
+    width: calc(var(--few));
+  }
 }
 
 :where(.Flex37) {
   --few: 30%;
 }
 :where(.Flex37) > :where(:nth-child(1)) {
-  @apply w-full md:w-[calc(var(--few))];
+  width: 100%;
+}
+@media (min-width: 768px) {
+  :where(.Flex37) > :where(:nth-child(1)) {
+    width: calc(var(--few));
+  }
 }
 :where(.Flex37) > :where(:nth-child(2)) {
-  @apply w-full md:w-[calc(100%-var(--few)-var(--gap))];
+  width: 100%;
 }
-:where(.Flex37).bp-sm > :where(:nth-child(1)) {
-  @apply sm:w-[calc(var(--few))];
+@media (min-width: 768px) {
+  :where(.Flex37) > :where(:nth-child(2)) {
+    width: calc(100% - var(--few) - var(--gap));
+  }
 }
-:where(.Flex37).bp-sm > :where(:nth-child(2)) {
-  @apply sm:w-[calc(100%-var(--few)-var(--gap))];
+@media (min-width: 640px) {
+  :where(.Flex37).bp-sm > :where(:nth-child(1)) {
+    width: calc(var(--few));
+  }
+}
+@media (min-width: 640px) {
+  :where(.Flex37).bp-sm > :where(:nth-child(2)) {
+    width: calc(100% - var(--few) - var(--gap));
+  }
 }
 
 :where(.Flex73) {
   --few: 30%;
 }
 :where(.Flex73) > :where(:nth-child(1)) {
-  @apply w-full md:w-[calc(100%-var(--few)-var(--gap))];
+  width: 100%;
+}
+@media (min-width: 768px) {
+  :where(.Flex73) > :where(:nth-child(1)) {
+    width: calc(100% - var(--few) - var(--gap));
+  }
 }
 :where(.Flex73) > :where(:nth-child(2)) {
-  @apply w-full md:w-[calc(var(--few))];
+  width: 100%;
 }
-:where(.Flex73).bp-sm > :where(:nth-child(1)) {
-  @apply sm:w-[calc(100%-var(--few)-var(--gap))];
+@media (min-width: 768px) {
+  :where(.Flex73) > :where(:nth-child(2)) {
+    width: calc(var(--few));
+  }
 }
-:where(.Flex73).bp-sm > :where(:nth-child(2)) {
-  @apply sm:w-[calc(var(--few))];
+@media (min-width: 640px) {
+  :where(.Flex73).bp-sm > :where(:nth-child(1)) {
+    width: calc(100% - var(--few) - var(--gap));
+  }
+}
+@media (min-width: 640px) {
+  :where(.Flex73).bp-sm > :where(:nth-child(2)) {
+    width: calc(var(--few));
+  }
 }
 
 :where(.Flex28) {
   --few: 20%;
 }
 :where(.Flex28) > :where(:nth-child(1)) {
-  @apply w-full md:w-[calc(var(--few))];
+  width: 100%;
+}
+@media (min-width: 768px) {
+  :where(.Flex28) > :where(:nth-child(1)) {
+    width: calc(var(--few));
+  }
 }
 :where(.Flex28) > :where(:nth-child(2)) {
-  @apply w-full md:w-[calc(100%-var(--few)-var(--gap))];
+  width: 100%;
 }
-:where(.Flex28).bp-sm > :where(:nth-child(1)) {
-  @apply sm:w-[calc(var(--few))];
+@media (min-width: 768px) {
+  :where(.Flex28) > :where(:nth-child(2)) {
+    width: calc(100% - var(--few) - var(--gap));
+  }
 }
-:where(.Flex28).bp-sm > :where(:nth-child(2)) {
-  @apply sm:w-[calc(100%-var(--few)-var(--gap))];
+@media (min-width: 640px) {
+  :where(.Flex28).bp-sm > :where(:nth-child(1)) {
+    width: calc(var(--few));
+  }
+}
+@media (min-width: 640px) {
+  :where(.Flex28).bp-sm > :where(:nth-child(2)) {
+    width: calc(100% - var(--few) - var(--gap));
+  }
 }
 
 :where(.Flex82) {
   --few: 20%;
 }
 :where(.Flex82) > :where(:nth-child(1)) {
-  @apply w-full md:w-[calc(100%-var(--few)-var(--gap))];
+  width: 100%;
+}
+@media (min-width: 768px) {
+  :where(.Flex82) > :where(:nth-child(1)) {
+    width: calc(100% - var(--few) - var(--gap));
+  }
 }
 :where(.Flex82) > :where(:nth-child(2)) {
-  @apply w-full md:w-[calc(var(--few))];
+  width: 100%;
 }
-:where(.Flex82).bp-sm > :where(:nth-child(1)) {
-  @apply sm:w-[calc(100%-var(--few)-var(--gap))];
+@media (min-width: 768px) {
+  :where(.Flex82) > :where(:nth-child(2)) {
+    width: calc(var(--few));
+  }
 }
-:where(.Flex82).bp-sm > :where(:nth-child(2)) {
-  @apply sm:w-[calc(var(--few))];
+@media (min-width: 640px) {
+  :where(.Flex82).bp-sm > :where(:nth-child(1)) {
+    width: calc(100% - var(--few) - var(--gap));
+  }
+}
+@media (min-width: 640px) {
+  :where(.Flex82).bp-sm > :where(:nth-child(2)) {
+    width: calc(var(--few));
+  }
 }
 
 :where(.Flex55, .Flex28, .Flex37, .Flex46, .Flex64, .Flex73, .Flex82) {
-  @apply flex flex-wrap gap-[--gap];
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  gap: var(--gap);
 }
 :where(.Flex55, .Flex28, .Flex37, .Flex46, .Flex64, .Flex73, .Flex82) img {
-  @apply w-full;
+  width: 100%;
 }
 :where(.Flex55, .Flex28, .Flex37, .Flex46, .Flex64, .Flex73, .Flex82):not(.bp-sm) > figure {
-  @apply -order-1 md:[order:revert];
+  -webkit-box-ordinal-group: 0;
+      -ms-flex-order: -1;
+          order: -1;
+}
+@media (min-width: 768px) {
+  :where(.Flex55, .Flex28, .Flex37, .Flex46, .Flex64, .Flex73, .Flex82):not(.bp-sm) > figure {
+    -webkit-box-ordinal-group: revert;
+        -ms-flex-order: revert;
+            order: revert;
+  }
 }
 :where(.Flex55, .Flex28, .Flex37, .Flex46, .Flex64, .Flex73, .Flex82).bp-sm > figure {
-  @apply -order-1 sm:[order:revert];
+  -webkit-box-ordinal-group: 0;
+      -ms-flex-order: -1;
+          order: -1;
+}
+@media (min-width: 640px) {
+  :where(.Flex55, .Flex28, .Flex37, .Flex46, .Flex64, .Flex73, .Flex82).bp-sm > figure {
+    -webkit-box-ordinal-group: revert;
+        -ms-flex-order: revert;
+            order: revert;
+  }
 }
 
 :where(.Wrap) {
-  @apply py-[--MY] mx-[--out] max-w-none w-auto relative;
+  position: relative;
+  margin-left: var(--out);
+  margin-right: var(--out);
+  width: auto;
+  max-width: none;
+  padding-top: var(--MY);
+  padding-bottom: var(--MY);
 }
 :where(.Wrap) > * {
-  @apply mx-auto max-w-full;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 100%;
 }
 :where(.Wrap) > * + * {
-  @apply mt-[--MY5];
+  margin-top: var(--MY5);
 }
 :where(.Wrap) + .Wrap {
-  @apply mt-0;
+  margin-top: 0px;
 }
 
 :where(.Stick) {
@@ -4464,96 +5054,159 @@ p:has(> a) .__anchor {
   --shift: 12.5%;
 }
 :where(.Stick) .StickItem {
-  @apply align-top text-center sticky top-0;
+  position: sticky;
+  top: 0px;
+  text-align: center;
+  vertical-align: top;
 }
 :where(.Stick) .StickItem img {
-  @apply w-full;
+  width: 100%;
 }
 :where(.Stick) .StickScr {
-  @apply relative z-[1] mt-0 mr-0;
+  position: relative;
+  z-index: 1;
+  margin-top: 0px;
+  margin-right: 0px;
 }
 :where(.Stick).IsColumn {
-  @apply block;
+  display: block;
 }
 :where(.Stick).IsColumn > * {
-  @apply flex-initial w-full mx-auto;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 1 auto;
+          flex: 0 1 auto;
 }
 :where(.Stick).IsRev .StickScr {
-  @apply ml-0;
+  margin-left: 0px;
 }
 @media (min-width: 1280px) {
   :where(.Stick) {
-    @apply flex items-start [--Nshift:calc(var(--shift)*-1)];
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+    --Nshift: calc(var(--shift) * -1);
   }
   :where(.Stick) .StickItem {
-    @apply flex-1;
+    -webkit-box-flex: 1;
+        -ms-flex: 1 1 0%;
+            flex: 1 1 0%;
   }
   :where(.Stick) .StickScr {
-    @apply w-[--scr] ml-[--Nshift];
+    margin-left: var(--Nshift);
+    width: var(--scr);
   }
   :where(.Stick).IsRev .StickScr {
-    @apply mr-[--Nshift];
+    margin-right: var(--Nshift);
   }
   :where(.Stick).IsRev .StickItem {
-    @apply order-1;
+    -webkit-box-ordinal-group: 2;
+        -ms-flex-order: 1;
+            order: 1;
   }
 }
 @media (min-width: 1024px) {
   :where(.Stick).bp-lg {
-    @apply flex items-start [--Nshift:calc(var(--shift)*-1)];
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+    --Nshift: calc(var(--shift) * -1);
   }
   :where(.Stick).bp-lg .StickItem {
-    @apply flex-1;
+    -webkit-box-flex: 1;
+        -ms-flex: 1 1 0%;
+            flex: 1 1 0%;
   }
   :where(.Stick).bp-lg .StickScr {
-    @apply w-[--scr] ml-[--Nshift];
+    margin-left: var(--Nshift);
+    width: var(--scr);
   }
   :where(.Stick).bp-lg.IsRev .StickScr {
-    @apply mr-[--Nshift];
+    margin-right: var(--Nshift);
   }
   :where(.Stick).bp-lg.IsRev .StickItem {
-    @apply order-1;
+    -webkit-box-ordinal-group: 2;
+        -ms-flex-order: 1;
+            order: 1;
   }
 }
 @media (min-width: 768px) {
   :where(.Stick).bp-md {
-    @apply flex items-start [--Nshift:calc(var(--shift)*-1)];
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+    --Nshift: calc(var(--shift) * -1);
   }
   :where(.Stick).bp-md .StickItem {
-    @apply flex-1;
+    -webkit-box-flex: 1;
+        -ms-flex: 1 1 0%;
+            flex: 1 1 0%;
   }
   :where(.Stick).bp-md .StickScr {
-    @apply w-[--scr] ml-[--Nshift];
+    margin-left: var(--Nshift);
+    width: var(--scr);
   }
   :where(.Stick).bp-md.IsRev .StickScr {
-    @apply mr-[--Nshift];
+    margin-right: var(--Nshift);
   }
   :where(.Stick).bp-md.IsRev .StickItem {
-    @apply order-1;
+    -webkit-box-ordinal-group: 2;
+        -ms-flex-order: 1;
+            order: 1;
   }
 }
 @media (min-width: 640px) {
   :where(.Stick).bp-sm {
-    @apply flex items-start [--Nshift:calc(var(--shift)*-1)];
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+    --Nshift: calc(var(--shift) * -1);
   }
   :where(.Stick).bp-sm .StickItem {
-    @apply flex-1;
+    -webkit-box-flex: 1;
+        -ms-flex: 1 1 0%;
+            flex: 1 1 0%;
   }
   :where(.Stick).bp-sm .StickScr {
-    @apply w-[--scr] ml-[--Nshift];
+    margin-left: var(--Nshift);
+    width: var(--scr);
   }
   :where(.Stick).bp-sm.IsRev .StickScr {
-    @apply mr-[--Nshift];
+    margin-right: var(--Nshift);
   }
   :where(.Stick).bp-sm.IsRev .StickItem {
-    @apply order-1;
+    -webkit-box-ordinal-group: 2;
+        -ms-flex-order: 1;
+            order: 1;
   }
 }
 :where(.Stick).IsColumn {
-  @apply flex-col;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 :where(.Stick).IsColumn > * {
-  @apply flex-initial w-full mx-auto;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 1 auto;
+          flex: 0 1 auto;
 }
 
 /* スクロール連動のラッパー（複数配置可） */
@@ -4563,13 +5216,13 @@ p:has(> a) .__anchor {
   --PVM: 0.5;
   --stw: 1;
   --stc: var(--CC);
-  @apply min-h-[55vh];
+  min-height: 55vh;
 }
 :where(.PathDraw) svg {
-  @apply block;
+  display: block;
 }
 :where(.PathDraw) path {
-  @apply fill-none;
+  fill: none;
   stroke: var(--stc);
   stroke-width: var(--stw);
   stroke-linecap: round;
@@ -4582,10 +5235,17 @@ p:has(> a) .__anchor {
   --PVM: 0.345;
   --stw: 1px;
   --stc: var(--CC);
-  @apply relative;
+  position: relative;
 }
 :where(.BorderDraw) > .BorderDrawSvg {
-  @apply block pointer-events-none overflow-visible absolute left-0 bottom-0 w-full h-[--stw];
+  pointer-events: none;
+  position: absolute;
+  left: 0px;
+  bottom: 0px;
+  display: block;
+  height: var(--stw);
+  width: 100%;
+  overflow: visible;
 }
 :where(.BorderDraw) > .BorderDrawSvg path {
   stroke: var(--stc);
@@ -4599,10 +5259,15 @@ p:has(> a) .__anchor {
   --PVM: 0.5;
 }
 :where(.BorderDraw).IsDown > .BorderDrawSvg {
-  @apply absolute left-0 top-0 w-[--stw] h-full;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  height: 100%;
+  width: var(--stw);
 }
 :where(.BorderDraw).IsDown > .BorderDrawSvg.Right {
-  @apply left-auto right-0;
+  left: auto;
+  right: 0px;
 }
 
 :where(.RgbShift) {
@@ -4623,25 +5288,30 @@ p:has(> a) .__anchor {
   --ys: calc(var(--yl)*0.5);
 }
 :where(.RgbShift) svg {
-  @apply block;
+  display: block;
 }
 :where(.RgbShift) path {
-  @apply fill-none;
+  fill: none;
   stroke: var(--stc);
   stroke-width: var(--stw);
   stroke-linecap: round;
   stroke-linejoin: round;
 }
 :where(.RgbShift) .RgbShiftStack {
-  @apply grid isolate;
+  isolation: isolate;
+  display: grid;
 }
 :where(.RgbShift) .RgbShiftLayer {
-  @apply mix-blend-screen will-change-transform [grid-area:1/1];
+  mix-blend-mode: screen;
+  will-change: transform;
+  grid-area: 1/1;
   -webkit-animation-delay: var(--delay);
           animation-delay: var(--delay);
 }
 :where(.RgbShift) .RgbShiftR {
-  @apply pointer-events-none [transform:translate(var(--RgbShiftRX),var(--RgbShiftRY))];
+  pointer-events: none;
+  -webkit-transform: translate(var(--RgbShiftRX), var(--RgbShiftRY));
+          transform: translate(var(--RgbShiftRX), var(--RgbShiftRY));
   --xl: calc(var(--shift)*-1);
   --x0: 0px;
   --xs: calc(var(--xl)*0.5);
@@ -4662,10 +5332,14 @@ p:has(> a) .__anchor {
           animation: RgbShiftY var(--beat) var(--delay) infinite;
 }
 :where(.RgbShift) .RgbShiftG {
-  @apply pointer-events-none [transform:translate(0,0)];
+  pointer-events: none;
+  -webkit-transform: translate(0, 0);
+          transform: translate(0, 0);
 }
 :where(.RgbShift) .RgbShiftB {
-  @apply pointer-events-auto [transform:translate(var(--RgbShiftBX),var(--RgbShiftBY))];
+  pointer-events: auto;
+  -webkit-transform: translate(var(--RgbShiftBX), var(--RgbShiftBY));
+          transform: translate(var(--RgbShiftBX), var(--RgbShiftBY));
 }
 :where(.RgbShift) .RgbShiftB:is(.IsBeat *) {
   -webkit-transform: unset;
@@ -4756,17 +5430,21 @@ p:has(> a) .__anchor {
   --mosaique-color: var(--MC);
   --mosaique-size-factor: 0.02;
   --mosaique-stagger: 800;
-  @apply relative isolate overflow-hidden;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
 }
 :where(.MaskMosaique) > .MaskMosaiqueCanvas {
-  @apply pointer-events-none absolute inset-0;
+  pointer-events: none;
+  position: absolute;
+  inset: 0px;
 }
 
 :where(.LottieScroll) {
   --canvasH: 100lvh;
 }
 :where(.LottieScroll) canvas {
-  @apply min-h-[--canvasH];
+  min-height: var(--canvasH);
 }
 :where(.LottieScroll).IsDemo {
   -webkit-animation: IsDemo 6s linear forwards;
@@ -4796,11 +5474,39 @@ p:has(> a) .__anchor {
 .StickyStep {
   --top: calc(100vh - var(--head)*3);
   --step: 4em;
-  @apply md:[--top:calc(100vh-2.5em)];
-  @apply w-fit max-w-full mx-auto flex items-start py-[1em] pb-[4em];
+}
+@media (min-width: 768px) {
+  .StickyStep {
+    --top: calc(100vh - 2.5em);
+  }
+}
+.StickyStep {
+  margin-left: auto;
+  margin-right: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  max-width: 100%;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  padding-top: 1em;
+  padding-bottom: 4em;
 }
 .StickyStep > * {
-  @apply sticky top-[--top] mx-[.125em] md:mx-[0.5em];
+  position: sticky;
+  top: var(--top);
+  margin-left: 0.125em;
+  margin-right: 0.125em;
+}
+@media (min-width: 768px) {
+  .StickyStep > * {
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+  }
 }
 .StickyStep > *:nth-child(2) {
   margin-top: calc(var(--step) * 1);
@@ -4836,36 +5542,42 @@ p:has(> a) .__anchor {
 }
 
 :where(.RandomRects) {
-  @apply relative;
+  position: relative;
 }
 :where(.RandomRects) .item {
-  @apply absolute [transform:translate(-50%,-50%)];
+  position: absolute;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
 }
 
 .GeneratedShapes > :not(g),
 .GeneratedShapes > g > *:not(line) {
-  @apply [transform-box:fill-box] origin-center;
+  -webkit-transform-origin: center;
+          transform-origin: center;
+  transform-box: fill-box;
   rotate: var(--GSR);
 }
 
 .MarkDown p {
-  @apply mb-[1em];
+  margin-bottom: 1em;
 }
 .MarkDown br {
-  @apply block;
+  display: block;
   content: "";
 }
 .MarkDown ul {
-  @apply pl-[1em] py-4;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  padding-left: 1em;
 }
 .MarkDown li {
-  @apply list-disc;
+  list-style-type: disc;
 }
 .MarkDown li ::marker {
-  @apply -mr-2;
+  margin-right: -0.5rem;
 }
 .MarkDown pre {
-  @apply overflow-auto;
+  overflow: auto;
 }
 
 .img100 {
@@ -4953,27 +5665,62 @@ p:has(> a) .__anchor {
 }
 
 :where(.ImgText) {
-  @apply flex flex-wrap gap-[--gap];
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  gap: var(--gap);
   --imgW: calc(50% - var(--gap)/2);
 }
 :where(.ImgText) figure {
-  @apply w-[var(--imgW,calc(50%-var(--gap)/2))] mx-auto;
+  margin-left: auto;
+  margin-right: auto;
+  width: var(--imgW, calc(50% - var(--gap) / 2));
 }
 :where(.ImgText) figure > a,
 :where(.ImgText) figure img {
-  @apply block w-full h-auto;
+  display: block;
+  height: auto;
+  width: 100%;
 }
 :where(.ImgText) > div {
-  @apply flex-1;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 0%;
+          flex: 1 1 0%;
 }
 :where(.ImgText).IsRev figure {
-  @apply order-1;
+  -webkit-box-ordinal-group: 2;
+      -ms-flex-order: 1;
+          order: 1;
 }
 :where(.ImgText):not(.bp-sm) figure {
-  @apply -order-1 w-full md:[order:revert] md:w-[var(--imgW,calc(50%-var(--gap)/2))];
+  -webkit-box-ordinal-group: 0;
+      -ms-flex-order: -1;
+          order: -1;
+  width: 100%;
+}
+@media (min-width: 768px) {
+  :where(.ImgText):not(.bp-sm) figure {
+    width: var(--imgW, calc(50% - var(--gap) / 2));
+    -webkit-box-ordinal-group: revert;
+        -ms-flex-order: revert;
+            order: revert;
+  }
 }
 :where(.ImgText).bp-sm figure {
-  @apply -order-1 w-full sm:[order:revert] sm:w-[var(--imgW,calc(50%-var(--gap)/2))];
+  -webkit-box-ordinal-group: 0;
+      -ms-flex-order: -1;
+          order: -1;
+  width: 100%;
+}
+@media (min-width: 640px) {
+  :where(.ImgText).bp-sm figure {
+    width: var(--imgW, calc(50% - var(--gap) / 2));
+    -webkit-box-ordinal-group: revert;
+        -ms-flex-order: revert;
+            order: revert;
+  }
 }
 
 :is(.BarBFAF, .BarBF, .BarAF) {
@@ -5028,16 +5775,30 @@ p:has(> a) .__anchor {
   }
 }
 .DescList dl {
-  @apply flex flex-wrap;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 .DescList dt {
-  @apply w-[--dtW] font-[--dtFW] py-[--PY] px-[--PX] bg-[--dtBG];
+  width: var(--dtW);
+  font-weight: var(--dtFW);
+  padding-top: var(--PY);
+  padding-bottom: var(--PY);
+  padding-left: var(--PX);
+  padding-right: var(--PX);
+  background-color: var(--dtBG);
 }
 .DescList dd {
-  @apply w-[--ddW] py-[--PY] px-[--PX];
+  width: var(--ddW);
+  padding-top: var(--PY);
+  padding-bottom: var(--PY);
+  padding-left: var(--PX);
+  padding-right: var(--PX);
 }
 .DescList.IsSimple dt, .DescList.IsSimple dd {
-  @apply border-b-[--line];
+  border-bottom-color: var(--line);
 }
 @media (max-width: 639px) {
   .DescList.IsSimple dt {
@@ -5049,10 +5810,11 @@ p:has(> a) .__anchor {
 }
 .DescList.IsZebra dt:nth-of-type(odd),
 .DescList.IsZebra dd:nth-of-type(odd) {
-  @apply bg-[--oddBG];
+  background-color: var(--oddBG);
 }
 .DescList.IsZebra dt, .DescList.IsZebra dd {
-  @apply px-[--PX];
+  padding-left: var(--PX);
+  padding-right: var(--PX);
 }
 @media (max-width: 639px) {
   .DescList.IsZebra dt {
