@@ -47,6 +47,7 @@
 - `tools/` のスクリプトで初期データやデモ内容を補完する
 - `npm run deploy` でテーマをビルドして ZIP 化する
 - `npm run deploy:prod` でテーマ同期と XML 取り込みをまとめて実行する
+- デプロイの詳細は [.codex/skills/wp-deploy/SKILL.md](./.codex/skills/wp-deploy/SKILL.md) を参照する
 - SSH + WP-CLI が使える環境なら、管理画面の初期状態まで CLI で寄せる
 
 管理画面の細かな文言修正や最終確認は WordPress 側で行いますが、テーマ反映とコンテンツ移行はコマンドでまとめられます。

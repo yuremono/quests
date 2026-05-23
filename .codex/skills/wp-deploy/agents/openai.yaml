@@ -1,0 +1,4 @@
+interface:
+  display_name: "WP Deploy"
+  short_description: "WordPressテーマの本番反映と関連ドキュメント整備"
+  default_prompt: "Use $wp-deploy to deploy the 0520portfolio-wp theme, verify SSH port handling, and keep deployment docs in sync."

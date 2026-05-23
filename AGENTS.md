@@ -62,6 +62,7 @@
 つなぐデータベースやサイトは、実行するときの環境設定で決まる。**意図していないサイト／データに対してデモ投入などを流さない**こと（別フォルダのサイトを指していたら、そのサイトの内容が変わる）。
 
 Local WP の初期投入や更新は [LOCAL_WP_CLI.md](./LOCAL_WP_CLI.md)、本番反映は [DEPLOYMENT.md](./DEPLOYMENT.md) と [UPDATE_TO_PROD.md](./UPDATE_TO_PROD.md) を見る。
+本番反映の手順整理や `DEPLOY_PORT` / SSH config の扱いは `.codex/skills/wp-deploy/SKILL.md` を参照する。
 
 実行手順の詳細は各ファイル先頭のコメントにある。`tools/deploy.sh` は `npm run deploy` と `npm run deploy:prod` の実体。
 

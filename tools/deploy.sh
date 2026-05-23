@@ -39,6 +39,32 @@ discover_php() {
 	return 1
 }
 
+resolve_ssh_port() {
+	local host="${DEPLOY_HOST:-}"
+	local configured_port
+
+	if [[ -n "${DEPLOY_PORT:-}" ]]; then
+		printf '%s\n' "${DEPLOY_PORT}"
+		return 0
+	fi
+
+	if [[ -z "$host" ]]; then
+		printf '22\n'
+		return 0
+	fi
+
+	configured_port="$(
+		ssh -G "$host" 2>/dev/null | awk '/^port / { print $2; exit }'
+	)"
+
+	if [[ -n "$configured_port" ]]; then
+		printf '%s\n' "$configured_port"
+		return 0
+	fi
+
+	printf '22\n'
+}
+
 PHP_BIN="${PORTFOLIO_PHP:-}"
 if [[ -z "$PHP_BIN" ]]; then
 	if ! PHP_BIN="$(discover_php)"; then
@@ -130,7 +156,7 @@ sync_remote() {
 	local host="${DEPLOY_HOST:-}"
 	local user="${DEPLOY_USER:-}"
 	local path="${DEPLOY_PATH:-}"
-	local port="${DEPLOY_PORT:-22}"
+	local port
 	local delete_flag=()
 	local remote
 	local remote_path_quoted
@@ -146,6 +172,7 @@ sync_remote() {
 	fi
 
 	remote="${user}@${host}"
+	port="$(resolve_ssh_port)"
 	remote_path_quoted="$(printf '%q' "$path")"
 
 	if [[ "${DEPLOY_DELETE:-0}" == "1" ]]; then
@@ -209,7 +236,7 @@ import_remote_content() {
 	local host="${DEPLOY_HOST:-}"
 	local user="${DEPLOY_USER:-}"
 	local path="${DEPLOY_PATH:-}"
-	local port="${DEPLOY_PORT:-22}"
+	local port
 	local remote
 	local remote_wp_path
 	local remote_xml_path
@@ -231,6 +258,7 @@ import_remote_content() {
 	fi
 
 	remote="${user}@${host}"
+	port="$(resolve_ssh_port)"
 	remote_xml_path="/tmp/$(basename "$xml_path")"
 
 	echo "==> uploading XML to ${remote}:${remote_xml_path}"

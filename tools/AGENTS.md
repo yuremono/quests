@@ -6,7 +6,7 @@
 
 - 実行前に、対象の WordPress 環境が正しいか確認する。
 - `WP_LOAD_PATH` や `local-wp-load.path` は、Local 用の対象サイトを指す。
-- 本番同期系は `DEPLOY_HOST` / `DEPLOY_USER` / `DEPLOY_PATH` を使う。
+- 本番同期系や `DEPLOY_PORT` の扱いは `.codex/skills/wp-deploy/SKILL.md` を参照する。
 - デモ投入系は、既存データを壊さないことを前提に使う。
 
 ## 主要ファイル
@@ -43,3 +43,4 @@
 - `local-wp-load.path` は、実行先の Local サイトが分かるときだけ使う。
 - 既存編集を上書きする可能性があるコマンドは、内容を確認してから実行する。
 - 本番に向けるときは、`DEPLOY_PATH` が `wp-content/themes/` 配下を指しているか確認する。
+- 本番反映を行うときは `.codex/skills/wp-deploy/SKILL.md` を参照する。
