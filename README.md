@@ -39,6 +39,11 @@
 5. `npm install` のあと `npm run build` を実行する。
 6. 初回のみ `composer install` を実行し、`composer run phpcs` を通す。
 
+## スキル
+
+- `wp-admin`: WordPress テーマの管理画面編集、ACF、CPT、メニュー化を扱うときに使う。
+- `wp-deploy`: WordPress テーマの本番反映、SSH 同期、XML 取り込み、デプロイ関連ドキュメント整備を扱うときに使う。
+
 ## 自動化の流れ
 
 この構成では、手作業を次の範囲まで減らせます。
@@ -69,7 +74,4 @@
 - [tools/AGENTS.md](./tools/AGENTS.md)
 - [LOCAL_WP_CLI.md](./LOCAL_WP_CLI.md)
 
-## スキル
 
-- `wp-admin`: WordPress テーマの管理画面編集、ACF、CPT、メニュー化を扱うときに使う。
-- `wp-deploy`: WordPress テーマの本番反映、SSH 同期、XML 取り込み、デプロイ関連ドキュメント整備を扱うときに使う。
