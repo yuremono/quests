@@ -1,6 +1,8 @@
 # Portfolio Corporate
 
-WordPress のクラシックテーマで、フロントページ、固定ページ、`work` / `news` の一覧、問い合わせフォーム、SEO 設定をまとめて扱うためのプロジェクトです。ローカルで編集し、CLI で初期データを補完し、SSH + WP-CLI で本番へ反映する流れを前提にしています。
+`https://yuremono.github.io/portfolio/`(ReactSPA)をwordpressに移植しています。
+フロントページ、固定ページ、`work` / `news` の一覧、問い合わせフォーム、SEO 設定をまとめて扱います。
+ローカルで編集し、CLI で初期データを補完し、SSH + WP-CLI で本番へ反映する流れを前提にしています。
 
 ## 要件
 
