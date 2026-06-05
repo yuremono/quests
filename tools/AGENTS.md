@@ -22,7 +22,7 @@
 例:
 
 ```txt
-tools/quests/
+tools-domain/
 tools/example-theme/
 ```
 

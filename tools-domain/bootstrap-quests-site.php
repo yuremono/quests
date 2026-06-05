@@ -3,8 +3,8 @@
  * Bootstrap a WordPress install for the Quests theme.
  *
  * Usage:
- *   WP_LOAD_PATH="/path/to/wp-load.php" php tools/bootstrap-quests-site.php
- *   php tools/bootstrap-quests-site.php
+ *   WP_LOAD_PATH="/path/to/wp-load.php" php tools-domain/bootstrap-quests-site.php
+ *   php tools-domain/bootstrap-quests-site.php
  *
  * @package Theme
  */
@@ -39,7 +39,7 @@ function quests_tools_resolve_wp_load(): string {
 		return quests_tools_expand_path( $env );
 	}
 
-	$config_file = dirname( __DIR__ ) . '/local-wp-load.path';
+	$config_file = dirname( __DIR__ ) . '/tools/local-wp-load.path';
 	if ( ! is_readable( $config_file ) ) {
 		return '';
 	}

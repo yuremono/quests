@@ -15,11 +15,11 @@ if ( ! function_exists( 'theme_quests_source_uri' ) ) {
 	/**
 	 * Get a URI inside the copied quests asset tree.
 	 *
-	 * @param string $relative Relative path under assets/quests.
+	 * @param string $relative Relative path under assets.
 	 * @return string
 	 */
 	function theme_quests_source_uri( string $relative = '' ): string {
-		$base = trailingslashit( get_theme_file_uri( 'assets/quests' ) );
+		$base = trailingslashit( get_theme_file_uri( 'assets' ) );
 
 		return $base . ltrim( $relative, '/' );
 	}

@@ -1,6 +1,6 @@
-# tools/quests/
+# tools-domain/
 
-`tools/quests/` は、Quests テーマと `https://yuremono.com/quests/` 用 WordPress に固有の補助ツールを置く場所です。
+`tools-domain/` は、Quests テーマと `https://yuremono.com/quests/` 用 WordPress に固有の補助ツールを置く場所です。
 
 ## 対象
 
@@ -31,20 +31,20 @@
 ローカル:
 
 ```bash
-tools/quests/run-bootstrap-quests-site.sh
+tools-domain/run-bootstrap-quests-site.sh
 ```
 
 Quests テーマとして ZIP 作成または本番同期する場合:
 
 ```bash
-tools/quests/deploy-quests.sh --zip-only
+tools-domain/deploy-quests.sh --zip-only
 ```
 
 本番で WP-CLI から実行する場合:
 
 ```bash
 cd ~/yuremono.com/public_html/quests
-wp eval-file wp-content/themes/quests/tools/quests/bootstrap-quests-site.php
+wp eval-file wp-content/themes/quests/tools-domain/bootstrap-quests-site.php
 ```
 
 通常の `tools/deploy.sh` は `tools/` を本番テーマに同期しません。本番初期化は、必要な場合だけ SSH + WP-CLI で明示的に実行します。
