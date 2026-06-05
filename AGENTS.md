@@ -34,7 +34,7 @@
 - クエスト2ページに表示されるテキスト・長文HTMLは、原則として `inc/acf-quests-pages.php` の ACF フィールドから取得する。
 - ACF フィールドを追加しただけで終わらせず、管理画面で編集者が場所を理解できるように `default_value` と説明を入れる。
 - 管理画面から増減する一覧を追加する場合は、リピーターを使わず CPT を検討する。ただし現時点では CPT は未使用。
-- 初期データ投入用の `tools/` はこのテーマから削除済み。既存編集を上書きする自動投入処理は追加しない。
+- `tools/` 直下は汎用ツール、`tools/quests/` は Quests 固有ツールとして分ける。旧 `portfolio-wp` 用の `work` / `news` / 標準ページ seed は使わない。
 - ACF は導入済み前提だが、テーマコードでは `function_exists( 'get_field' )` や `get_post_meta()` fallback を使い、ACF 無効時の fatal error を避ける。
 - WYSIWYG でHTMLを扱う場合は `wp_kses()` と `theme_quests_allowed_html()` を使う。
 - ヘッダー・フッターのメインナビゲーションは `primary` メニュー位置の `wp_nav_menu()` から出力する。未割り当て時だけテーマ内 fallback を表示する。

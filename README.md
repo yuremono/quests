@@ -22,7 +22,7 @@
 - Advanced Custom Fields
 - Local WP
 
-このテーマには Node.js ビルド、CPT、`tools/` の初期投入スクリプト、XMLインポート運用はありません。
+このテーマには Node.js ビルド、CPT、XMLインポート運用はありません。`tools/` は Local WP / 本番 WordPress の環境初期化とデプロイ補助のために残しています。
 
 ## 管理画面の構成
 
@@ -68,6 +68,17 @@ ACFフィールドグループ:
 ```txt
 ~/yuremono.com/public_html/quests/wp-content/themes/quests/
 ```
+
+## tools/
+
+[tools/](./tools/) には、汎用のデプロイ補助と、テーマ固有の初期化ツールを分けて置いています。
+
+- `tools/deploy.sh`: 汎用の ZIP 作成と本番テーマ同期を行う。
+- `tools/quests/run-bootstrap-quests-site.sh`: Local WP の `quests` サイトを `Front` / `Service` / ACF / メニュー構成へ整える。
+- `tools/quests/bootstrap-quests-site.php`: WordPress 読み込み後に同じ初期化を行う。
+- `tools/quests/deploy-quests.sh`: Quests テーマスラッグとZIP名を固定して `tools/deploy.sh` を実行する。
+
+旧 `portfolio-wp` 用の `work` / `news` / 標準ページ seed は、このテーマでは使いません。
 
 ## 検証
 
