@@ -1,0 +1,26 @@
+README.md
+  s_46c2dbaa79061d::t_2bb95183e494c0 1-91
+AGENTS.md
+  s_46c2dbaa79061d::t_d2197b1b976293 30-33
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.3",
+  "base_commit_sha": "9d0c4234327722435ae64ab5aede53d8e77b6a16",
+  "prompts": {},
+  "humans": {
+    "h_53dad1e32c3c71": {
+      "author": "yuremono <5alviaofficinali50@gmail.com>"
+    }
+  },
+  "sessions": {
+    "s_46c2dbaa79061d": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019e96cc-833e-7ff0-9162-31a7a36d7731",
+        "model": "gpt-5.5"
+      },
+      "human_author": "yuremono <5alviaofficinali50@gmail.com>"
+    }
+  }
+}
