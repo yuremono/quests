@@ -26,8 +26,8 @@ yuremono.com/public_html/quests/wp-content/themes/quests/
 ```
 
 3. サブディレクトリ側 WordPress 管理画面で、外観 → テーマから `Quests` を有効化する。
-4. 固定ページ `Service` を作成し、テンプレートに `quests-service` を指定する。
-5. 表示設定で、トップページは固定ページを使わず、テーマの `front-page.php` を表示させる。固定ページ運用にしたい場合は、トップ用固定ページにテンプレート `quests` を指定する。
+4. 固定ページ `Service` を作成し、スラッグを `service`、テンプレートを `Quests Service` に指定する。
+5. 表示設定で、トップページは固定ページを使わず、テーマの `front-page.php` を表示させる。固定ページ運用にしたい場合は、トップ用固定ページにテンプレート `Quests Top` を指定する。
 
 ## ルートWordPressへの影響
 
