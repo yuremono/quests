@@ -1,0 +1,24 @@
+tools/deploy.sh
+  s_b986bd1a7c2562::t_318b5c228b870b 194
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.3",
+  "base_commit_sha": "dac622386b189245cefcc58d3f1406fddea20ae6",
+  "prompts": {},
+  "humans": {
+    "h_53dad1e32c3c71": {
+      "author": "yuremono <5alviaofficinali50@gmail.com>"
+    }
+  },
+  "sessions": {
+    "s_b986bd1a7c2562": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019e9b63-ad4f-7a62-a098-2faedc2d5713",
+        "model": "gpt-5.5"
+      },
+      "human_author": "yuremono <5alviaofficinali50@gmail.com>"
+    }
+  }
+}
